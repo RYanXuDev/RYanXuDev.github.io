@@ -20,6 +20,7 @@
 		<!-- Nav -->
 		<nav id="nav">
 			<a href="#" class="icon solid fa-home"><span>Me</span></a>
+			<a href="#blogs" class="icon solid fa-blog"><span>Blogs</span></a>
 			<a href="#work" class="icon solid fa-folder"><span>Work</span></a>
 			<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
 			<a href="https://www.youtube.com/@RYanIndieDev" class="icon brands fa-youtube"><span>Videos</span></a>
@@ -40,15 +41,29 @@
 				</a>
 			</article>
 
+			<!-- Blogs -->
+			<article id="blogs" class="panel">
+				<div id="blogs-content"></div>
+			</article>
+
+			<script>
+				const blogsContainer = document.getElementById('blogs-content');
+			
+				fetch('files/blogs.html')
+					.then(response => response.text())
+					.then(htmlContent => {
+						blogsContainer.innerHTML = htmlContent;
+					})
+					.catch(error => {
+						console.error('Error loading HTML file:', error);
+					});
+			</script>
+
 			<!-- Work -->
 			<article id="work" class="panel">
 				<header>
 					<h2>Work</h2>
 				</header>
-				<p>
-					I develop games, and also make tutorial videos. <br>
-					Here are some game projects I made. 
-				</p>
 				<section>
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
@@ -69,6 +84,19 @@
 				<header>
 					<h2>Contact Me</h2>
 				</header>
+				<p>
+					<p>
+						<span class="icon solid fa-at"></span>
+						<a href="mailto:ryanxukeepwalking@gmail.com">
+							<span>ryanxukeepwalking@gmail.com</span>
+						</a>
+					</p>
+
+					<p>
+						<span class="icon brands fa-qq"></span> 
+							<span>2595321198</span>
+					</p>
+				</p>
 				
 			</article>
 
