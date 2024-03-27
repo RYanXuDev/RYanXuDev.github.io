@@ -1,125 +1,162 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
-<html>
+<html lang='en'>
 
-	<head>
-		<title>RYanXuDev</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript>
-			<link rel="stylesheet" href="assets/css/noscript.css" />
-		</noscript>
-	</head>
+<head>
+    
+    <meta charset='UTF-8'>
+    
+    <meta http-equiv='x-ua-compatible' 
+          content='IE=edge'>
+    
+    <meta name='viewport' 
+          content='width=device-width, initial-scale=1.0'>
 
-	<body class="is-preload">
+    <link rel='stylesheet' 
+          href='files/css/index.css'>
 
-		<!-- Wrapper-->
-		<div id="wrapper">
+    <script src='https://kit.fontawesome.com/0798bfb7d0.js' 
+            crossorigin='anonymous'></script>
+    
+    <title>RYan Dev Channel</title>
+    
+</head>
 
-			<!-- Nav -->
-			<nav id="nav">
-				<a href="#" class="icon solid fa-home"><span>Me</span></a>
-				<a href="#blogs" class="icon solid fa-blog"><span>Blogs</span></a>
-				<a href="#work" class="icon solid fa-folder"><span>Work</span></a>
-				<a href="#contact" class="icon solid fa-envelope"><span>Contact</span></a>
-				<a href="https://www.youtube.com/@RYanIndieDev" class="icon brands fa-youtube"><span>Videos</span></a>
-			</nav>
+<body>
 
-			<!-- Main -->
-			<div id="main">
+    <div class='body-container'>
+        
+        <nav class='sidebar' 
+             id='sidebar'>
+            
+            <header>
+                
+                <div class='image-text'>
+                    
+                    <span class='image'>
+                        <img src='images/icons/ryanxu.jpg' 
+                             alt='logo'></span>
+                    
+                    <div class='text header-text'>
+                        <span class='name'>RYan Xu</span>
+                        <span class='profession'>Game Developer</span>
+                        <span class='profession'>Content Creator</span>
+                    </div>
+                    
+                </div>
+    
+                <span class='toggle fa-solid fa-angles-left' 
+                      id='sidebar-toggle'></span>
+                
+            </header>
+            
+            <div class='navi-button-container' id="navi-button-container"> 
+                
+                <div>
+                    <ul id="navi-button-list">
+                        
+                        <li class='search-box' id='sidebar-search-box'>
+                            <span class='icon fa-solid fa-magnifying-glass'></span>
+                            <input type='search'
+                                   id="search-input"
+                                   placeholder='Search...' 
+                                   oninput="sidebarSearch()">
+                        </li>
+                    
+                        <li class='navi-button' id="navi-home">
+                            <span class='icon fa-solid fa-house-chimney'></span>
+                            <span class='text nav-text'>Home</span>
+                        </li>
+                        
+                        <li class='navi-button' id="navi-games">
+                            <span class='icon fa-solid fa-gamepad'></span>
+                            <span class='text nav-text'>Games</span>
+                        </li>
 
-				<!-- Me -->
-				<article id="home" class="panel intro">
-					<header>
-						<h1>Xu Zuyan</h1>
-						<p>Game Developer<br>Content Creator</p>
-					</header>
-					<a href="#blogs" class="jumplink pic">
-						<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
-						<img src="images/portrait.jpg" alt="" />
-					</a>
-				</article>
+                         <li class='navi-button' id="navi-tutorials">
+                            <span class='icon fa-solid fa-book'></span>
+                            <span class='text nav-text'>Tutorials</span>
+                        </li>
+                        
+                        <li class='navi-button' id="navi-blogs">
+                            <span class='icon fa-solid fa-blog'></span>
+                            <span class='text nav-text'>Blogs</span>
+                        </li>
 
-				<!-- Blogs -->
-				<article id="blogs" class="panel">
-					<div id="blogs-content"></div>
-				</article>
+                        <li class='navi-button' id="navi-contact">
+                            <span class='icon fa-solid fa-envelope'></span>
+                            <span class='text nav-text'>Contact</span>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class='sidebar-bottom-container'>
+                    
+                    <div class='icon-links-container'>
 
-				<script>
-					const blogsContainer = document.getElementById('blogs-content');
-				
-					fetch('files/blogs.html')
-						.then(response => response.text())
-						.then(htmlContent => {
-							blogsContainer.innerHTML = htmlContent;
-						})
-						.catch(error => {
-							console.error('Error loading HTML file:', error);
-						});
-				</script>
+                        <a class='icon-link fa-brands fa-patreon' 
+                           href="https://www.patreon.com/RYanIndieDev"
+                           data-url="https://www.patreon.com/RYanIndieDev"></a>
+                        
+                        <a class='icon-link fa-brands fa-youtube'
+                           href="https://www.youtube.com/@RYanIndieDev"
+                           data-url="https://www.youtube.com/@RYanIndieDev"></a>    
+                        
+                        <a class='icon-link fa-brands fa-bilibili'
+                           href="https://space.bilibili.com/27164588"
+                           data-url="https://space.bilibili.com/27164588"></a>
 
-				<!-- Work -->
-				<article id="work" class="panel">
-					<header>
-						<h2>Work</h2>
-						<p>在这里显示第一个section的内容。</p>
-					</header>
-					<section>
-						<iframe src="projects\unity\shooting-star\index.html" width="100%" height="300px" frameborder="0"></iframe>
-						<!-- <div class="row">
-							<div class="col-4 col-6-medium col-12-small">
-								<a href="#" class="image fit"><img src="images/pic01.jpg" alt=""></a>
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-								<a href="#" class="image fit"><img src="images/pic02.jpg" alt=""></a>
-							</div>
-							<div class="col-4 col-6-medium col-12-small">
-								<a href="#" class="image fit"><img src="images/pic03.jpg" alt=""></a>
-							</div>
-						</div> -->
-					</section>
-				</article>
+                        <a class='icon-link fa-brands fa-x-twitter' 
+                           href="https://twitter.com/XuZuyan" 
+                           data-url="https://twitter.com/XuZuyan"></a>
 
-				<!-- Contact -->
-				<article id="contact" class="panel">
-					<header>
-						<h2>Contact Me</h2>
-					</header>
-					<p>
-						<p>
-							<span class="icon solid fa-at"></span>
-							<a href="mailto:ryanxukeepwalking@gmail.com">
-								<span>ryanxukeepwalking@gmail.com</span>
-							</a>
-						</p>
+                        <a class="icon-link fa-brands fa-artstation" 
+                           href="https://www.artstation.com/xuzuyan" 
+                           data-url="https://www.artstation.com/xuzuyan"></a>
+                        
+                    </div>
+                    
+                <ul>
+                    <li class='display-mode-container'>
+                        
+                        <div class='display-mode-icon-container'>
+                            
+                            <span class='icon fa-solid fa-sun' 
+                                  id='sun-icon'></span>
+                            
+                            <span class='icon fa-solid fa-moon' 
+                                  id='moon-icon'></span>
+                        </div>
+                        
+                        <div class='display-mode-toggle-container'>
+                            <span class='display-mode-toggle' 
+                                  id='display-mode-toggle'></span>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <section class='main-container'>
+            
+            <div class='content-container' id="content-container"></div>
+            
+            <div class='copyright-container' 
+                 id='footer' >
+                <span class='copyright-text'>&copy;XuZuyan&nbsp;</span>
+                    <span class='copyright-text' 
+                          id='current-year'></span>
+            </div>
+            
+        </section>
+        
+    </div>
 
-						<p>
-							<span class="icon brands fa-qq"></span> 
-								<span>2595321198</span>
-						</p>
-					</p>
-					
-				</article>
+    <script src='files/js/index.js'></script>
 
-			</div>
-
-			<!-- Footer -->
-			<div id="footer">
-				<ul class="copyright">
-					<li>&copy;RYanXuDev <span id="current-year">2024</span></li>
-				</ul>
-			</div>
-
-		</div>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-
-	</body>
+</body>
 
 </html>
