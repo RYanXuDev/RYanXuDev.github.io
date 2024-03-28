@@ -187,9 +187,11 @@ function initializeContent()
         const gameList = document.getElementById("game-list");
         const gameWindow = document.getElementById('game-window');
         const gameWindowCloseButton = document.getElementById('game-window-close-button');
+        const gameFrame = document.getElementById('game-frame');
 
         gameWindowCloseButton.addEventListener("click", function ()
         {
+            unloadGame();
             gameWindow.style.display = "none";
             gameList.style.display = "flex";
         });
@@ -204,7 +206,7 @@ function initializeContent()
                 switch (gamePanel.id)
                 {
                     case 'game-panel-shooting-star':
-                        // loadUnityGame();
+                        loadGame("../projects/unity/shooting-star");
                         break;
                     case 'game-panel-02':
                         break;
@@ -216,17 +218,21 @@ function initializeContent()
             })
         })
         
-        // function loadUnityGame() 
-        // {
-        //     fetch('../projects/unity/shooting-star/index.html')
-        //         .then(response => response.text())
-        //         .then(html => {
-        //             gameWindow.innerHTML = html;
-        //         })
-        //         .catch(error => {
-        //             console.error('Error loading Unity WebGL game:', error);
-        //         });
-        // }
+        function loadGame(path) 
+        {
+            gameFrame.src = path;
+            gameWindow.appendChild(gameFrame);
+        }
+        
+        function  unloadGame()
+        {
+            const iframe = gameWindow.querySelector('iframe');
+            
+            if (iframe)
+            {
+                gameWindow.removeChild(iframe);
+            }
+        }
     }
 }
 

@@ -77,7 +77,7 @@
 
 .game-panel-01
 {
-    background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_01.png");
+    background-image: url("../../images/shooting-star/ShootingStar_01.png");
 }
 
 .game-window
@@ -87,8 +87,8 @@
     flex-direction: column;
     align-items: flex-end;
     height: 100%;
-    border: 1px solid var(--border-color);
-    background-color: var(--shadow);
+    border-radius: 10px;
+    background-color: var(--sidebar-color);
     box-shadow: 0 0 10px var(--shadow);
 }
 
@@ -115,4 +115,11 @@
     border-style: solid;
     border-color: var(--primary-color-light);
     box-shadow: 0 0 10px var(--primary-color-light);
+}
+
+.game-frame
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
 }
