@@ -220,6 +220,7 @@ function initializeContent()
         
         function loadGame(path) 
         {
+            unloadGame();
             gameFrame.src = path;
             gameWindow.appendChild(gameFrame);
         }
