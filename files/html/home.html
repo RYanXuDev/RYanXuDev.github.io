@@ -1,9 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
 
-</body>
+    <head>
+        <meta charset="UTF-8">
+        
+        <style>
+            
+            .home-main-container
+            {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .cube 
+            {
+                width: 300px;
+                height: 300px;
+                position: relative;
+                transform-style: preserve-3d;
+                animation: rotateCube 20s infinite linear;
+            }
+            
+            .face 
+            {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: url("../../images/pic01.jpg");
+                background-size: cover;
+                border: 1px dashed rgba(98, 98, 98, 0.2);
+                border-radius: 1px;
+            }
+            
+            .front 
+            { 
+                transform: translateZ(150px); 
+                background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_01.png");
+            }
+            
+            .back 
+            { 
+                transform: rotateY(180deg) translateZ(150px);
+                background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_02.png");
+            }
+            
+            .right 
+            { 
+                transform: rotateY(90deg) translateZ(150px);
+                background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_03.png");
+            }
+            
+            .left 
+            { 
+                transform: rotateY(-90deg) translateZ(150px);
+                background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_04.png");
+            }
+            
+            .top 
+            { 
+                transform: rotateX(90deg) translateZ(150px);
+                background-image: url("../../projects/unity/shooting-star/Images/ShootingStar_05.png");
+            }
+            
+            .bottom 
+            { 
+                transform: rotateX(-90deg) translateZ(150px); 
+                background-image: url("../../images/icons/ryanxu.jpg");
+            }
+            
+            @keyframes rotateCube 
+            {
+                from 
+                { 
+                    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+                }
+                to 
+                { 
+                    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+                }
+            }
+            
+        </style>
+        
+    </head>
+    
+    <body>
+    
+        <div class="home-main-container">
+                <div class="cube" id="cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face right"></div>
+                    <div class="face left"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+                </div>
+        </div>
+    
+        <script>
+            function randomRotation() 
+            {
+                const x = Math.floor(Math.random() * 360);
+                const y = Math.floor(Math.random() * 360);
+                const z = Math.floor(Math.random() * 360);
+                return `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+            }
+    
+            const cube = document.getElementById('cube');
+    
+            cube.addEventListener('animationiteration', function() 
+            {
+                cube.style.transform = randomRotation();
+            });
+
+            // let isRotating = true; // 控制方块是否自动旋转的标志
+            //
+            // // 鼠标按下事件监听器
+            // cube.addEventListener('mousedown', function(event) 
+            // {
+            //     isRotating = false; // 停止方块自动旋转
+            //
+            //     // 记录鼠标按下时的初始位置
+            //     const startX = event.clientX;
+            //     const startY = event.clientY;
+            //
+            //     // 鼠标移动事件监听器
+            //     function onMouseMove(event) 
+            //     {
+            //         console.log("Mouse move!");
+            //         // 计算鼠标移动的距离
+            //         const deltaX = event.clientX - startX;
+            //         const deltaY = event.clientY - startY;
+            //
+            //         // 更新方块的旋转角度
+            //         cube.style.transform = `rotateX(${-deltaY}deg) rotateY(${deltaX}deg)`;
+            //     }
+            //
+            //     // 鼠标松开事件监听器
+            //     function onMouseUp() 
+            //     {
+            //         // 停止监听鼠标移动事件
+            //         window.removeEventListener('mousemove', onMouseMove);
+            //
+            //         // 恢复方块的自动旋转
+            //         isRotating = true;
+            //     }
+            //
+            //     // 添加鼠标移动和松开事件监听器
+            //     window.addEventListener('mousemove', onMouseMove);
+            //     window.addEventListener('mouseup', onMouseUp);
+            // });
+            //
+            // // 每一帧更新方块的旋转角度（如果正在自动旋转）
+            // function updateRotation() 
+            // {
+            //     if (isRotating) 
+            //     {
+            //         cube.style.transform = randomRotation(); // 这里可以修改方块自动旋转的速度和方向
+            //     }
+            //    
+            //     requestAnimationFrame(updateRotation);
+            // }
+            //
+            // // 启动方块的自动旋转
+            // updateRotation();
+        </script>
+    
+    </body>
 </html>

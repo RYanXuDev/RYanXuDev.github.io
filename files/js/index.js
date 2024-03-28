@@ -1,13 +1,17 @@
 const SIDEBAR = document.getElementById('sidebar');
-const CONTENT_CONTAINER = document.getElementById('content-container');
+const HOME_CONTENT_CONTAINER = document.getElementById('home-content-container');
+const GAMES_CONTENT_CONTAINER = document.getElementById('games-content-container');
+const TUTORIALS_CONTENT_CONTAINER = document.getElementById('tutorials-content-container');
+const BLOGS_CONTENT_CONTAINER = document.getElementById('blogs-content-container');
+const CONTACT_CONTENT_CONTAINER = document.getElementById('contact-content-container');
 
+initializeContent();
 initializeTheme();
 initializeSidebarStyle();
 initializeSidebarToggle();
 initializeDisplayModeToggle();
-initializeIconLinks();
 initializeNaviButtons();
-initializeDefaultContent();
+initializeIconLinks();
 SetCurrentYear();
 
 function initializeTheme()
@@ -125,65 +129,142 @@ function sidebarSearch()
 
 }
 
+function initializeContent()
+{
+    let homeHTML;
+    let gamesHTML;
+    let tutorialsHTML;
+    let blogsHTML;
+    let contactHTML;
+    
+    Promise.all([
+        getHtmlContent('files/html/home.html'),
+        getHtmlContent('files/html/games.html'),
+        getHtmlContent('files/html/tutorials.html'),
+        getHtmlContent('files/html/blogList.html'),
+        getHtmlContent('files/html/contact.html')])
+        .then(contents => 
+        {
+            [homeHTML, gamesHTML, tutorialsHTML, blogsHTML, contactHTML] = contents;
+            
+            loadContent(HOME_CONTENT_CONTAINER, homeHTML);
+            loadContent(GAMES_CONTENT_CONTAINER, gamesHTML);
+            loadContent(TUTORIALS_CONTENT_CONTAINER, tutorialsHTML);
+            loadContent(BLOGS_CONTENT_CONTAINER, blogsHTML);
+            loadContent(CONTACT_CONTENT_CONTAINER, contactHTML);
+            
+            initializeGameWindow();
+            
+            HOME_CONTENT_CONTAINER.style.display = "flex";
+            
+        })
+        .catch(error => 
+        {
+            console.error('Error initializing content:', error);
+        });
+
+    function getHtmlContent(path)
+    {
+        return fetch(path)
+            .then(response => response.text())
+            .then(htmlContent =>
+            {
+                return htmlContent;
+            });
+    }
+
+    function loadContent(contentContainer, html)
+    {
+        const content = document.createElement('div');
+        content.innerHTML = html;
+        content.style.flex = "1";
+        contentContainer.appendChild(content);
+        contentContainer.style.display = "none";
+    }
+
+    function initializeGameWindow()
+    {
+        const gameList = document.getElementById("game-list");
+        const gameWindow = document.getElementById('game-window');
+        const gameWindowCloseButton = document.getElementById('game-window-close-button');
+
+        gameWindowCloseButton.addEventListener("click", function ()
+        {
+            gameWindow.style.display = "none";
+            gameList.style.display = "flex";
+        });
+        
+        gameList.querySelectorAll('.game-panel').forEach(gamePanel =>
+        {
+            gamePanel.addEventListener("click", function ()
+            {
+                gameWindow.style.display = "flex";
+                gameList.style.display = "none";
+                
+                switch (gamePanel.id)
+                {
+                    case 'game-panel-shooting-star':
+                        // loadUnityGame();
+                        break;
+                    case 'game-panel-02':
+                        break;
+                    case 'game-panel-03':
+                        break;
+                    default:
+                        break;
+                }
+            })
+        })
+        
+        // function loadUnityGame() 
+        // {
+        //     fetch('../projects/unity/shooting-star/index.html')
+        //         .then(response => response.text())
+        //         .then(html => {
+        //             gameWindow.innerHTML = html;
+        //         })
+        //         .catch(error => {
+        //             console.error('Error loading Unity WebGL game:', error);
+        //         });
+        // }
+    }
+}
+
 function initializeNaviButtons()
 {
+    let focusedNaviButton = document.getElementById("navi-home");
+    let shownContentContainer = HOME_CONTENT_CONTAINER;
     const naviButtons = document.querySelectorAll('.navi-button');
-    const naviButtonContainer = document.getElementById('navi-button-container');
+    const naviMap = new Map();
+    
+    naviMap.set('navi-home', HOME_CONTENT_CONTAINER);
+    naviMap.set('navi-games', GAMES_CONTENT_CONTAINER);
+    naviMap.set('navi-tutorials', TUTORIALS_CONTENT_CONTAINER);
+    naviMap.set('navi-blogs', BLOGS_CONTENT_CONTAINER);
+    naviMap.set('navi-contact', CONTACT_CONTENT_CONTAINER);
 
-    naviButtons.forEach(naviButton => 
+    naviButtons.forEach(naviButton =>
     {
-        naviButton.addEventListener('click', () => 
+        naviButton.addEventListener('click', () =>
         {
-            const focusedNaviButton = naviButtonContainer.querySelector('.navi-button-focused');
-            focusedNaviButton?.classList.remove('navi-button-focused');
-            focusedNaviButton?.querySelectorAll('span').forEach(element =>
+            if (focusedNaviButton.id === naviButton.id) return;
+
+            focusedNaviButton.classList.remove('navi-button-focused');
+            focusedNaviButton.querySelectorAll('span').forEach(element =>
             {
                 element.classList.remove('focused');
             })
+            focusedNaviButton = naviButton;
 
             naviButton.classList.add('navi-button-focused');
             naviButton.querySelectorAll('span').forEach(element =>
             {
                 element.classList.add('focused');
             })
-
-            const id = naviButton.id;
-
-            switch (id) 
-            {
-                case 'navi-home':
-                    getHtmlContent('files/html/home.html');
-                    break;
-                case 'navi-games':
-                    getHtmlContent('files/html/games.html');
-                    break;
-                case 'navi-tutorials':
-                    getHtmlContent('files/html/tutorials.html');
-                    break;
-                case 'navi-blogs':
-                    getHtmlContent('files/html/blogList.html');
-                    break;
-                case 'navi-contact':
-                    getHtmlContent('files/html/contact.html');
-                    break;
-                default:
-                    CONTENT_CONTAINER.innerHTML  = '';
-            }
+            
+            shownContentContainer.style.display = "none";
+            shownContentContainer = naviMap.get(naviButton.id);
+            shownContentContainer.style.display = "flex";
         });
     });
-}
-
-function initializeDefaultContent()
-{
-    getHtmlContent('files/html/home.html');
-}
-
-function getHtmlContent(path)
-{
-    fetch(path)
-        .then(response => response.text())
-        .then(htmlContent => 
-        {
-            CONTENT_CONTAINER.innerHTML = htmlContent;
-        });
 }
