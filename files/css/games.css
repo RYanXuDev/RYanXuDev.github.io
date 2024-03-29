@@ -1,24 +1,9 @@
-:root
-{
-    --primary-color: rgba(100, 180, 255, 0.9);
-    --primary-color-light: #e2f6ff;
-    --border-color: rgba(190, 191, 199, 0.2);
-    --text-color: #646464;
-    --shadow: rgba(0, 0, 0, 0.5);
-
-    --transition-100ms: all 0.1s ease;
-    --transition-200ms: all 0.2s ease;
-    --transition-300ms: all 0.3s ease;
-    --transition-400ms: all 0.4s ease;
-    --transition-500ms: all 0.5s ease;
-}
-
 .game-list
 {
     display: flex;
     flex-grow: 1;
     height: 100%;
-    padding: 2% 0;
+    padding: 2%;
     list-style: none;
 }
 
@@ -29,8 +14,7 @@
     flex-grow: 1;
     flex-direction: column;
     align-items: center;
-    margin-left: 1%;
-    margin-right: 1%;
+    margin: 0 1%;
     background-image: url("../../images/pic01.jpg") ;
     background-position: center;
     background-size: auto 100%;
@@ -41,10 +25,8 @@
 
 .game-panel:hover
 {
-    border: 2px;
-    border-style: solid;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 20px var(--primary-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
     scale: 1.05;
 }
 

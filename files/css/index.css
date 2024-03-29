@@ -13,7 +13,7 @@
     --body-color: #f8f4f2;
     --sidebar-color: #fafafa;
     --primary-color: rgba(100, 180, 255, 0.9);
-    --primary-color-light: #e2f6ff;
+    --primary-color-light: #d1f1ff;
     --border-color: rgba(190, 191, 199, 0.2);
     --toggle-color: #DDD;
     --text-color: #646464;
@@ -179,6 +179,7 @@ body.dark-mode
 
 .sidebar .search-box
 {
+    display: none;
     background: var(--primary-color-light);
 }
 
@@ -411,6 +412,8 @@ body.dark-mode .display-mode-toggle::before
 .content-container
 {
     flex: 1;
+    padding-bottom: 1%;
+    overflow: hidden;
     transition: var(--transition-500ms);
 }
 

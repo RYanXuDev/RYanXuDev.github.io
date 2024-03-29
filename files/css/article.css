@@ -1,0 +1,66 @@
+.article-container
+{
+    display: flex;
+    flex-direction: column;
+    height: 98%;
+    width: 98%;
+    padding: 3% 80px 3% 80px;
+    margin: 1%;
+    background-color: var(--sidebar-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--shadow);
+    overflow: auto;
+}
+
+.article-container h1, p, li
+{
+    color: var(--text-color);
+}
+
+.article-container h1
+{
+    margin-bottom: 15px;
+}
+
+.article-container p
+{
+    margin-bottom: 10px;
+}
+
+.article-container ul
+{
+    padding: 0 10px;
+}
+
+.article-container li
+{
+    margin: 8px 10px;
+}
+
+.article-container hr
+{
+    margin: 15px 0;
+    border: 1px inset var(--border-color);
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--primary-color-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color: var(--primary-color);
+}
