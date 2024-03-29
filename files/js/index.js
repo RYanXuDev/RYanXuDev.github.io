@@ -6,6 +6,7 @@ const BLOGS_CONTENT_CONTAINER = document.getElementById('blogs-content-container
 const CONTACT_CONTENT_CONTAINER = document.getElementById('contact-content-container');
 
 let tutorialArticleContainer;
+let blogArticleContainer;
 
 initializeContent();
 initializeTheme();
@@ -45,6 +46,11 @@ function initializeContent()
             HOME_CONTENT_CONTAINER.style.display = "flex";
 
             tutorialArticleContainer = document.getElementById('tutorial-article-container');
+            tutorialArticleContainer.style.display = 'none';
+            
+            blogArticleContainer = document.getElementById('blog-article-container');
+            blogArticleContainer.style.display = 'none';
+            
             testTutorialContainer();
 
         })
@@ -312,40 +318,47 @@ function testTutorialContainer()
 function getMarkdownArticles(directoryPath) 
 {
     const markdownFilesMap = new Map();
-    return fetchDirectoryContents(directoryPath)
-        .then(files => 
+    
+    return fetchAllFilesInDirectory(directoryPath)
+        .then(files =>
         {
             files.forEach(file => 
             {
-                const fileName = extractFileName(file.path);
-                
-                if (fileName.endsWith('.md')) 
-                {
-                    const articleName = removeExtension(fileName);
-                    markdownFilesMap.set(articleName, file.path);
-                }
+                markdownFilesMap.set(file.name, file.path);
             });
             
             return markdownFilesMap;
         });
+}
     
-    function fetchDirectoryContents(directoryPath)
-    {
-        const apiURL = "https://api.github.com/repos/RYanXuDev/RYanXuDev.github.io/contents/" + directoryPath;
-        return fetch(apiURL)
-            .then(response => response.json())
-            .then(data => data.filter(item => item.type === 'file'));
-    }
-    
-    function extractFileName(filePath) 
-    {
-        return filePath.split('/').pop();
-    }
-    
-    function removeExtension(fileName) 
+function fetchAllFilesInDirectory(directoryPath)
+{
+    function removeExtension(fileName)
     {
         return fileName.split('.').slice(0, -1).join('.');
     }
+    
+    const apiURL = "https://api.github.com/repos/RYanXuDev/RYanXuDev.github.io/contents/" + directoryPath;
+    return fetch(apiURL)
+        .then(response => response.json())
+        .then(data => 
+        {
+            const files = data.filter(item => item.type === 'file');
+            const directories = data.filter(item => item.type === 'dir');
+            const filePromises = files.map(file => {
+                return fetch(file.download_url)
+                    .then(response => response.text())
+                    .then(content => ({
+                        name: removeExtension(file.name),
+                        path: file.path,
+                        content: content
+                    }));
+            });
+            const directoryPromises = directories.map(dir => fetchAllFilesInDirectory(directoryPath + '/' + dir.name));
+
+            return Promise.all([...filePromises, ...directoryPromises]);
+        })
+        .then(files => files.flat());
 }
 
 const directoryPath = 'files/md';
@@ -361,3 +374,11 @@ getMarkdownArticles(directoryPath)
     {
         console.error('Error fetching Markdown files:', error);
     });
+//
+// fetchAllFilesInDirectory(directoryPath)
+//     .then(contents => {
+//         console.log(contents);
+//     })
+//     .catch(error => {
+//         console.error('Error fetching files:', error);
+//     });
