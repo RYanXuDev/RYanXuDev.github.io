@@ -7,6 +7,7 @@ const CONTACT_CONTENT_CONTAINER = document.getElementById('contact-content-conta
 
 let tutorialArticleContainer;
 let blogArticleContainer;
+let blogListContainer;
 
 initializeContent();
 initializeTheme();
@@ -29,7 +30,7 @@ function initializeContent()
         getHtmlContent('files/html/home.html'),
         getHtmlContent('files/html/games.html'),
         getHtmlContent('files/html/tutorials.html'),
-        getHtmlContent('files/html/blogList.html'),
+        getHtmlContent('files/html/blogs.html'),
         getHtmlContent('files/html/contact.html')])
         .then(contents =>
         {
@@ -48,10 +49,13 @@ function initializeContent()
             tutorialArticleContainer = document.getElementById('tutorial-article-container');
             tutorialArticleContainer.style.display = 'none';
             
+            blogListContainer = document.getElementById('blog-list-container');
             blogArticleContainer = document.getElementById('blog-article-container');
             blogArticleContainer.style.display = 'none';
             
-            testTutorialContainer();
+            // show tutorials list
+            
+            initializeBlogs();
 
         })
         .catch(error =>
@@ -293,46 +297,14 @@ function initializeNaviButtons()
         element.classList.add('focused');
     })
 }
-
-function convertMarkDown(contentContainer, path)
-{
-    const converter = new showdown.Converter();
-
-    fetch(path)
-        .then(response => response.text())
-        .then(markdownText => 
-        {
-            contentContainer.innerHTML = converter.makeHtml(markdownText);
-        })
-        .catch(error => 
-        {
-            console.error('Error fetching Markdown file:', error);
-        });
-}
-
-function testTutorialContainer()
-{
-    convertMarkDown(tutorialArticleContainer, "files/md/GameDevLogs/shooting-star/shooting-star-update-v0.3.1.md");
-}
-
-function getMarkdownArticles(directoryPath) 
-{
-    const markdownFilesMap = new Map();
-    
-    return fetchAllFilesInDirectory(directoryPath)
-        .then(files =>
-        {
-            files.forEach(file => 
-            {
-                markdownFilesMap.set(file.name, file.path);
-            });
-            
-            return markdownFilesMap;
-        });
-}
     
 function fetchAllFilesInDirectory(directoryPath)
 {
+    function getExtension(fileName)
+    {
+        return fileName.split('.').pop().toLowerCase();    
+    }
+    
     function removeExtension(fileName)
     {
         return fileName.split('.').slice(0, -1).join('.');
@@ -345,12 +317,14 @@ function fetchAllFilesInDirectory(directoryPath)
         {
             const files = data.filter(item => item.type === 'file');
             const directories = data.filter(item => item.type === 'dir');
-            const filePromises = files.map(file => {
+            const filePromises = files.map(file => 
+            {
                 return fetch(file.download_url)
                     .then(response => response.text())
                     .then(content => ({
-                        name: removeExtension(file.name),
                         path: file.path,
+                        name: removeExtension(file.name),
+                        extension: getExtension(file.name),
                         content: content
                     }));
             });
@@ -361,24 +335,58 @@ function fetchAllFilesInDirectory(directoryPath)
         .then(files => files.flat());
 }
 
-const directoryPath = 'files/md';
-getMarkdownArticles(directoryPath)
-    .then(markdownFilesMap => 
+function initializeBlogs()
+{
+    const blogsDirectoryPath = 'files/md/blogs';
+    generateArticleList(blogsDirectoryPath, blogListContainer, blogArticleContainer);
+    
+    const blogContentCloseButton = document.getElementById('blog-content-close-button');
+    blogContentCloseButton.addEventListener('click', function ()
     {
-        markdownFilesMap.forEach((path, name) => 
-        {
-            console.log(`Article Name: ${name}, Path: ${path}`);
-        });
-    })
-    .catch(error => 
-    {
-        console.error('Error fetching Markdown files:', error);
+        blogArticleContainer.style.display = "none";
+        blogListContainer.style.display = "flex";
     });
-//
-// fetchAllFilesInDirectory(directoryPath)
-//     .then(contents => {
-//         console.log(contents);
-//     })
-//     .catch(error => {
-//         console.error('Error fetching files:', error);
-//     });
+}
+
+function generateArticleList(directoryPath, listContainer, articleContainer)
+{
+    const articleContentContainer = articleContainer.querySelector('.article-content-container');
+    
+    fetchAllFilesInDirectory(directoryPath).then(files =>
+    {
+        files.forEach(file =>
+        {
+            const article = document.createElement('li');
+            const articleLink = document.createElement('a');
+            
+            articleLink.textContent = file.name;
+            articleLink.href = "#";
+            articleLink.addEventListener('click', () =>
+            {
+                listContainer.style.display = 'none';
+                articleContainer.style.display = 'flex';
+                
+                switch (file.extension)
+                {
+                    case 'md':
+                        convertMarkDown(articleContentContainer, file.content);
+                        break;
+                    case 'html':
+                        articleContentContainer.innerHTML = file.content;
+                        break;
+                    default:
+                        break;
+                }
+            });
+            
+            article.appendChild(articleLink);
+            listContainer.appendChild(article);
+        });
+    
+        function convertMarkDown(contentContainer, markdownContent)
+        {
+            const converter = new showdown.Converter();
+            contentContainer.innerHTML = converter.makeHtml(markdownContent);
+        }
+    })
+}

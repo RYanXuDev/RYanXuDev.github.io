@@ -406,15 +406,42 @@ body.dark-mode .display-mode-toggle::before
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 2% 2% 1% 2%;
+    padding: 1% 2%;
 }
 
 .content-container
 {
     flex: 1;
-    padding-bottom: 1%;
+    padding: 1%;
     overflow: hidden;
     transition: var(--transition-500ms);
+}
+
+.close-button
+{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    padding: 4px;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    color: var(--sidebar-color);
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    transition: var(--transition-100ms);
+}
+
+.close-button:hover
+{
+    scale: 1.1;
+    border: 1px;
+    border-style: solid;
+    border-color: var(--primary-color-light);
+    box-shadow: 0 0 10px var(--primary-color-light);
 }
 
 .copyright-container
