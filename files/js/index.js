@@ -337,7 +337,7 @@ function fetchAllFilesInDirectory(directoryPath)
 
 function initializeBlogs()
 {
-    const blogsDirectoryPath = 'files/md/blogs';
+    const blogsDirectoryPath = 'blogs';
     generateArticleList(blogsDirectoryPath, blogListContainer, blogArticleContainer);
     
     const blogContentCloseButton = document.getElementById('blog-content-close-button');
