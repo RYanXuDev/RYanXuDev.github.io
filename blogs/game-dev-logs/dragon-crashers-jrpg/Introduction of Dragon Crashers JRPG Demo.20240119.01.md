@@ -1,6 +1,8 @@
 # Introduction of Dragon Crasher JRPG Demo
 
 <iframe
+width="100%"
+height="100%"
 src="https://www.youtube.com/embed/DxM4bM3-O10?si=-l2ia0A9uWBI8496"
 title="YouTube video player"
 frameborder="0"

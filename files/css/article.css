@@ -38,18 +38,36 @@
     overflow: auto;
 }
 
-.article-content-container h1, p, li
+.article-content-container h1, h2, p, a, li
 {
     color: var(--text-color);
 }
 
-.article-content-container h1
+.article-content-container a:hover
+{
+    color: var(--primary-color);
+}
+
+.article-content-container h1, h2
 {
     margin-bottom: 15px;
 }
 
+.article-content-container h1
+{
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.article-content-container h2
+{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
 .article-content-container p
 {
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
@@ -61,6 +79,29 @@
 .article-content-container li
 {
     margin: 8px 10px;
+}
+
+.article-content-container img
+{
+    width: 75%;
+    margin: 0.5% 0;
+    border-radius: 5px;
+}
+
+.article-content-container iframe
+{
+    width: 75%;
+    margin: 1% 0;
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px)
+{
+    iframe
+    {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .article-content-container hr
