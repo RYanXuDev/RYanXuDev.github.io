@@ -390,3 +390,49 @@ function generateArticleList(directoryPath, listContainer, articleContainer)
         }
     })
 }
+
+function sortByUpdateDateAndIndex(files) 
+{
+    // 根据更新日期和文件序号提取出日期和序号信息，并按照日期和序号排序
+    files.sort((a, b) => {
+        const getDateAndIndex = (fileName) => 
+        {
+            const parts = fileName.split('.');
+            const datePart = parts[parts.length - 2]; // 更新日期部分
+            const indexPart = parts[parts.length - 1]; // 文件序号部分
+            return { date: datePart, index: indexPart };
+        };
+
+        const aDateAndIndex = getDateAndIndex(a);
+        const bDateAndIndex = getDateAndIndex(b);
+
+        // 将日期字符串转换为Date对象
+        const aDate = new Date(aDateAndIndex.date);
+        const bDate = new Date(bDateAndIndex.date);
+
+        // 首先按照更新日期排序，日期越晚的排在前面
+        if (aDate > bDate) return -1;
+        if (aDate < bDate) return 1;
+
+        // 如果更新日期相同，则按照文件序号排序，序号越大的排在前面
+        return parseInt(bDateAndIndex.index) - parseInt(aDateAndIndex.index);
+    });
+
+    return files;
+}
+
+// Test
+fetchAllFilesInDirectory('blogs').then(files =>
+{
+    console.log("原来的文件名列表：");
+    files.forEach(file =>
+    {
+        console.log(file.name);
+    })
+    const sortedFiles = sortByUpdateDateAndIndex(files);
+    console.log("排序后的文件名列表：");
+    files.forEach(file =>
+    {
+        console.log(file.name);
+    })
+})

@@ -67,8 +67,8 @@
 
 .article-content-container p
 {
-    font-size: 14px;
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .article-content-container ul
@@ -79,6 +79,7 @@
 .article-content-container li
 {
     margin: 8px 10px;
+    font-size: 14px;
 }
 
 .article-content-container img
