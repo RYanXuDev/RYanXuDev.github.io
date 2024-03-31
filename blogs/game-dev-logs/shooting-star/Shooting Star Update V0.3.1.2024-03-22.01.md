@@ -23,3 +23,7 @@ This update includes a complete UI overhaul, introducing online leaderboard func
   - Gameplay Enhancements:
     - Introduction of Player Over Drive value: When player's projectiles hit enemy ships, the player will accumulate Over Drive value. When the Over Drive value reaches 100%, the player can press the corresponding button to enter Over Drive mode, and pressing the button again will cancel Over Drive mode at any time.
     - Modification of existing Energy value to slowly regenerate when not full. Similar to before, using energy skills (currently only the roll-dodge skill, with plans to add new skills in the future) will deplete energy.
+
+----
+
+2024-03-22 阿严

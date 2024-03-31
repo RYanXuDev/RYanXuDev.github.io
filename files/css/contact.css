@@ -1,0 +1,31 @@
+.contact-content-container h2
+{
+    padding: 0 2%;
+}
+
+.contact-content-container .contact-list
+{
+    padding: 0 2%;
+}
+
+.contact-content-container .contact-list li
+{
+    margin-bottom: 2px;
+    padding: 5px 0;
+    list-style: none;
+}
+
+.contact-icon
+{
+    padding-right: 5px;
+}
+
+.contact-text
+{
+    font-size: 18px;
+}
+
+.contact-text:hover
+{
+    color: var(--primary-color);
+}

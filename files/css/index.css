@@ -413,7 +413,7 @@ body.dark-mode .display-mode-toggle::before
 {
     flex: 1;
     padding: 1%;
-    overflow: hidden;
+    overflow: auto;
     transition: var(--transition-500ms);
 }
 

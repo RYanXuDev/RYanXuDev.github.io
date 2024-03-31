@@ -11,7 +11,7 @@
     - 排行榜：修复WebGL版本玩家ID不是唯一的问题，现在从每个不同的浏览器开始游戏时都会登录一名新的玩家。
     - UI: 修复当进入Boss战之后暂停游戏并返回开始画面，Boss的HUD血条依然会显示的问题。
 
-----
+---
 
 This update makes some adjustment on gameplay and UI, and also fixes some bugs. 
 
@@ -24,3 +24,7 @@ This update makes some adjustment on gameplay and UI, and also fixes some bugs.
   - Bug Fixes:
       - Leaderboard: Fixed an issue in the WebGL version where player IDs were not unique. Now, a new player will be logged in from each different browser when starting the game.
       - UI: Fixed an issue where the boss's HUD health bar would still be displayed after pausing the game and returning to the start screen during a boss battle.
+
+---
+
+2024-03-29 阿严
