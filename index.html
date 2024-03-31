@@ -3,7 +3,7 @@
 <html lang='en'>
 
 <head>
-    
+
     <meta charset='UTF-8'>
     <meta http-equiv='x-ua-compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -12,146 +12,146 @@
 
     <script src='https://kit.fontawesome.com/0798bfb7d0.js' crossorigin='anonymous'></script>
     <script type="text/javascript" src="plugins/showdown-2.1.0/dist/showdown.min.js"></script>
-    
+
     <title>RYan Dev Channel</title>
-    
+
 </head>
 
 <body>
 
-    <div class='body-container'>
-        
-        <nav class='sidebar' id='sidebar'>
-            
-            <header>
-                
-                <div class='image-text'>
+<div class='body-container'>
+
+    <nav class='sidebar' id='sidebar'>
+
+        <header>
+
+            <div class='image-text'>
                     
                     <span class='image'>
                         <img src='images/icons/ryanxu.jpg' alt='logo'></span>
-                    
-                    <div class='text header-text'>
-                        <span class='name'>RYan Xu</span>
-                        <span class='profession'>Game Developer</span>
-                        <span class='profession'>Content Creator</span>
-                    </div>
-                    
-                </div>
-    
-                <span class='toggle fa-solid fa-angles-left' id='sidebar-toggle'></span>
-                
-            </header>
-            
-            <div class='navi-button-container' id="navi-button-container"> 
-                
-                <div>
-                    <ul id="navi-button-list">
-                        
-                        <li class='search-box' id='sidebar-search-box'>
-                            <span class='icon fa-solid fa-magnifying-glass'></span>
-                            <input type='search'
-                                   id="search-input"
-                                   placeholder='Search...' 
-                                   oninput="sidebarSearch()">
-                        </li>
-                    
-                        <li class='navi-button' id="navi-home">
-                            <span class='icon fa-solid fa-house-chimney'></span>
-                            <span class='text nav-text'>Home</span>
-                        </li>
-                        
-                        <li class='navi-button' id="navi-games">
-                            <span class='icon fa-solid fa-gamepad'></span>
-                            <span class='text nav-text'>Games</span>
-                        </li>
 
-                         <li class='navi-button' id="navi-tutorials">
-                            <span class='icon fa-solid fa-book'></span>
-                            <span class='text nav-text'>Tutorials</span>
-                        </li>
-                        
-                        <li class='navi-button' id="navi-blogs">
-                            <span class='icon fa-solid fa-blog'></span>
-                            <span class='text nav-text'>Blogs</span>
-                        </li>
-
-                        <li class='navi-button' id="navi-contact">
-                            <span class='icon fa-solid fa-envelope'></span>
-                            <span class='text nav-text'>Contact</span>
-                        </li>
-                        
-                    </ul>
+                <div class='text header-text'>
+                    <span class='name'>RYan Xu</span>
+                    <span class='profession'>Game Developer</span>
+                    <span class='profession'>Content Creator</span>
                 </div>
+
             </div>
-            
-            <div class='sidebar-bottom-container'>
-                    
-                    <div class='icon-links-container'>
 
-                        <a class='icon-link fa-brands fa-patreon' 
-                           href="https://www.patreon.com/RYanIndieDev"
-                           data-url="https://www.patreon.com/RYanIndieDev"></a>
-                        
-                        <a class='icon-link fa-brands fa-youtube'
-                           href="https://www.youtube.com/@RYanIndieDev"
-                           data-url="https://www.youtube.com/@RYanIndieDev"></a>    
-                        
-                        <a class='icon-link fa-brands fa-bilibili'
-                           href="https://space.bilibili.com/27164588"
-                           data-url="https://space.bilibili.com/27164588"></a>
+            <span class='toggle fa-solid fa-angles-left' id='sidebar-toggle'></span>
 
-                        <a class='icon-link fa-brands fa-x-twitter' 
-                           href="https://twitter.com/XuZuyan" 
-                           data-url="https://twitter.com/XuZuyan"></a>
+        </header>
 
-                        <a class="icon-link fa-brands fa-artstation" 
-                           href="https://www.artstation.com/xuzuyan" 
-                           data-url="https://www.artstation.com/xuzuyan"></a>
-                        
-                    </div>
-                    
-                <ul>
-                    <li class='display-mode-container'>
-                        
-                        <div class='display-mode-icon-container'>
-                            
-                            <span class='icon fa-solid fa-sun' 
-                                  id='sun-icon'></span>
-                            
-                            <span class='icon fa-solid fa-moon' 
-                                  id='moon-icon'></span>
-                        </div>
-                        
-                        <div class='display-mode-toggle-container'>
-                            <span class='display-mode-toggle' 
-                                  id='display-mode-toggle'></span>
-                        </div>
-                        
+        <div class='navi-button-container' id="navi-button-container">
+
+            <div>
+                <ul id="navi-button-list">
+
+                    <li class='search-box' id='sidebar-search-box'>
+                        <span class='icon fa-solid fa-magnifying-glass'></span>
+                        <input type='search'
+                               id="search-input"
+                               placeholder='Search...'
+                               oninput="sidebarSearch()">
                     </li>
+
+                    <li class='navi-button' id="navi-home">
+                        <span class='icon fa-solid fa-house-chimney'></span>
+                        <span class='text nav-text'>Home</span>
+                    </li>
+
+                    <li class='navi-button' id="navi-games">
+                        <span class='icon fa-solid fa-gamepad'></span>
+                        <span class='text nav-text'>Games</span>
+                    </li>
+
+                    <li class='navi-button' id="navi-tutorials">
+                        <span class='icon fa-solid fa-book'></span>
+                        <span class='text nav-text'>Tutorials</span>
+                    </li>
+
+                    <li class='navi-button' id="navi-blogs">
+                        <span class='icon fa-solid fa-blog'></span>
+                        <span class='text nav-text'>Blogs</span>
+                    </li>
+
+                    <li class='navi-button' id="navi-contact">
+                        <span class='icon fa-solid fa-envelope'></span>
+                        <span class='text nav-text'>Contact</span>
+                    </li>
+
                 </ul>
             </div>
-        </nav>
-        
-        <section class='main-container'>
-            
-            <div class='content-container' id="home-content-container"></div>
-            <div class='content-container' id="games-content-container"></div>
-            <div class='content-container' id="tutorials-content-container"></div>
-            <div class='content-container' id="blogs-content-container"></div>
-            <div class='content-container' id="contact-content-container"></div>
-            
-            <div class='copyright-container' 
-                 id='footer' >
-                <span class='copyright-text'>&copy;XuZuyan&nbsp;</span>
-                    <span class='copyright-text' 
-                          id='current-year'></span>
-            </div>
-            
-        </section>
-        
-    </div>
+        </div>
 
-    <script src='files/js/index.js'></script>
+        <div class='sidebar-bottom-container'>
+
+            <div class='icon-links-container'>
+
+                <a class='icon-link fa-brands fa-patreon'
+                   href="https://www.patreon.com/RYanIndieDev"
+                   data-url="https://www.patreon.com/RYanIndieDev"></a>
+
+                <a class='icon-link fa-brands fa-youtube'
+                   href="https://www.youtube.com/@RYanIndieDev"
+                   data-url="https://www.youtube.com/@RYanIndieDev"></a>
+
+                <a class='icon-link fa-brands fa-bilibili'
+                   href="https://space.bilibili.com/27164588"
+                   data-url="https://space.bilibili.com/27164588"></a>
+
+                <a class='icon-link fa-brands fa-x-twitter'
+                   href="https://twitter.com/XuZuyan"
+                   data-url="https://twitter.com/XuZuyan"></a>
+
+                <a class="icon-link fa-brands fa-artstation"
+                   href="https://www.artstation.com/xuzuyan"
+                   data-url="https://www.artstation.com/xuzuyan"></a>
+
+            </div>
+
+            <ul>
+                <li class='display-mode-container'>
+
+                    <div class='display-mode-icon-container'>
+                            
+                            <span class='icon fa-solid fa-sun'
+                                  id='sun-icon'></span>
+
+                        <span class='icon fa-solid fa-moon'
+                              id='moon-icon'></span>
+                    </div>
+
+                    <div class='display-mode-toggle-container'>
+                            <span class='display-mode-toggle'
+                                  id='display-mode-toggle'></span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class='main-container'>
+
+        <div class='content-container' id="home-content-container"></div>
+        <div class='content-container' id="games-content-container"></div>
+        <div class='content-container' id="tutorials-content-container"></div>
+        <div class='content-container' id="blogs-content-container"></div>
+        <div class='content-container' id="contact-content-container"></div>
+
+        <div class='copyright-container'
+             id='footer'>
+            <span class='copyright-text'>&copy;XuZuyan&nbsp;</span>
+            <span class='copyright-text'
+                  id='current-year'></span>
+        </div>
+
+    </section>
+
+</div>
+
+<script src='files/js/index.js'></script>
 
 </body>
 

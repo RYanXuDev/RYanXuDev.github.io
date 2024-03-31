@@ -6,6 +6,7 @@ const BLOGS_CONTENT_CONTAINER = document.getElementById('blogs-content-container
 const CONTACT_CONTENT_CONTAINER = document.getElementById('contact-content-container');
 
 let tutorialArticleContainer;
+let tutorialListContainer;
 let blogArticleContainer;
 let blogListContainer;
 
@@ -44,15 +45,15 @@ function initializeContent() {
 
             HOME_CONTENT_CONTAINER.style.display = "flex";
 
+            tutorialListContainer = document.getElementById('tutorial-list-container');
             tutorialArticleContainer = document.getElementById('tutorial-article-container');
             tutorialArticleContainer.style.display = 'none';
 
             blogListContainer = document.getElementById('blog-list-container');
             blogArticleContainer = document.getElementById('blog-article-container');
             blogArticleContainer.style.display = 'none';
-
-            // show tutorials list
-
+            
+            initializeTutorials();
             initializeBlogs();
 
         })
@@ -249,14 +250,6 @@ function initializeNaviButtons() {
 }
 
 function fetchAllFilesInDirectory(directoryPath) {
-    // function getExtension(fileName) {
-    //     return fileName.split('.').pop().toLowerCase();
-    // }
-    //
-    // function removeExtension(fileName) {
-    //     return fileName.split('.').slice(0, -1).join('.');
-    // }
-
     function parseFileName(fileName) {
         // 定义正则表达式来匹配文件名格式
         const regex = /^(.+)\.(\d{4}-\d{2}-\d{2})\.(\d{2})\.(\w+)$/;
@@ -320,6 +313,17 @@ function initializeBlogs() {
     blogContentCloseButton.addEventListener('click', function () {
         blogArticleContainer.style.display = "none";
         blogListContainer.style.display = "flex";
+    });
+}
+
+function initializeTutorials(){
+    const tutorialDirectoryPath = 'tutorials';
+    generateArticleList(tutorialDirectoryPath, tutorialListContainer, tutorialArticleContainer);
+    
+    const tutorialContentCloseButton = document.getElementById('tutorial-content-close-button');
+    tutorialContentCloseButton.addEventListener('click', function (){
+        tutorialArticleContainer.style.display = "none";
+        tutorialListContainer.style.display = "flex";
     });
 }
 
@@ -390,18 +394,18 @@ function sortByUpdateDateAndIndex(files) {
 }
 
 // // Test
-fetchAllFilesInDirectory('blogs').then(files =>
-{
-    console.log("原来的文件名列表：");
-    files.forEach(file =>
-    {
-        console.log(file.name);
-    })
-
-    const sortedFiles = sortByUpdateDateAndIndex(files);
-    console.log("排序后的文件名列表：");
-    sortedFiles.forEach(file =>
-    {
-        console.log(`%c${file.name}`, 'color: red;');
-    })
-})
+// fetchAllFilesInDirectory('blogs').then(files =>
+// {
+//     console.log("原来的文件名列表：");
+//     files.forEach(file =>
+//     {
+//         console.log(file.name);
+//     })
+//
+//     const sortedFiles = sortByUpdateDateAndIndex(files);
+//     console.log("排序后的文件名列表：");
+//     sortedFiles.forEach(file =>
+//     {
+//         console.log(`%c${file.name}`, 'color: red;');
+//     })
+// })
