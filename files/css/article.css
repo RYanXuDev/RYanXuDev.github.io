@@ -6,7 +6,7 @@
 
 .list-container h2
 {
-    padding: 0 2%;
+    padding: 0 1%;
 }
 
 .article-list
@@ -93,13 +93,13 @@
 .article-content-container h1
 {
     font-size: 30px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .article-content-container h2
 {
     font-size: 20px;
-    margin-bottom: 20px;
+    margin: 10px 0;
 }
 
 .article-content-container p
@@ -110,7 +110,7 @@
 
 .article-content-container ul
 {
-    padding: 0 10px;
+    margin-bottom: 5px;
 }
 
 .article-content-container li
