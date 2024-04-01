@@ -343,7 +343,7 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
             articleIcon.classList.add('fa-solid');
             
             articleLink.textContent = file.name;
-            articleLink.href = "#";
+            articleLink.href = `#${file.path}`;
             articleLink.addEventListener('click', () => {
                 listContainer.style.display = 'none';
                 articleContainer.style.display = 'flex';
@@ -376,17 +376,13 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
 }
 
 function sortByUpdateDateAndIndex(files) {
-    // 根据更新日期和文件序号提取出日期和序号信息，并按照日期和序号排序
     files.sort((a, b) => {
-        // 将日期字符串转换为Date对象
         const aUpdateDate = new Date(a.updateDate);
         const bUpdateDate = new Date(b.updateDate);
 
-        // 首先按照更新日期排序，日期越晚的排在前面
         if (aUpdateDate > bUpdateDate) return -1;
         if (aUpdateDate < bUpdateDate) return 1;
 
-        // 如果更新日期相同，则按照文件序号排序，序号越大的排在前面
         return parseInt(b.index) - parseInt(a.index);
     });
 
