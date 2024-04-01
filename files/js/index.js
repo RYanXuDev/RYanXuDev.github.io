@@ -96,7 +96,7 @@ function initializeContent() {
 
                 switch (gamePanel.id) {
                     case 'game-panel-shooting-star':
-                        loadGame("https://itch.io/embed-upload/10046807?color=ffffff");
+                        loadGame("https://itch.io/embed-upload/10078260?color=ffffff");
                         break;
                     case 'game-panel-02':
                         break;
