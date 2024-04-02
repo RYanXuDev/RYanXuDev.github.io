@@ -141,14 +141,14 @@ body.dark-mode
 .sidebar .toggle
 {
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
-    position: absolute;
     top: 50%;
     right: -18px;
     width: 24px;
     height: 24px;
-    font-size: 10px;
+    font-size: 14px;
     color: var(--sidebar-color);
     background: var(--primary-color);
     border-radius: 50%;
@@ -412,16 +412,15 @@ body.dark-mode .display-mode-toggle::before
 .content-container
 {
     flex: 1;
-    padding: 1%;
+    padding: 1% 1% 2% 1%;
     overflow: auto;
     transition: var(--transition-500ms);
 }
 
-.close-button
+.close-button,
+.back-to-top-button
 {
     position: absolute;
-    top: -12px;
-    right: -12px;
     padding: 4px;
     text-align: center;
     width: 24px;
@@ -432,10 +431,23 @@ body.dark-mode .display-mode-toggle::before
     border-radius: 50%;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
     z-index: 100;
-    transition: var(--transition-100ms);
+    transition: var(--transition-300ms);
 }
 
-.close-button:hover
+.close-button
+{
+    top: -12px;
+    right: -12px;
+}
+
+.back-to-top-button
+{
+    bottom: -12px;
+    right: -12px;
+}
+
+.close-button:hover,
+.back-to-top-button:hover
 {
     scale: 1.1;
     border: 1px;

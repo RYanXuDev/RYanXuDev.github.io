@@ -1,23 +1,44 @@
-const SIDEBAR = document.getElementById('sidebar');
-const HOME_CONTENT_CONTAINER = document.getElementById('home-content-container');
-const GAMES_CONTENT_CONTAINER = document.getElementById('games-content-container');
-const TUTORIALS_CONTENT_CONTAINER = document.getElementById('tutorials-content-container');
-const BLOGS_CONTENT_CONTAINER = document.getElementById('blogs-content-container');
-const CONTACT_CONTENT_CONTAINER = document.getElementById('contact-content-container');
+const sideBar = document.getElementById('sidebar');
+const homeContentContainer = document.getElementById('home-content-container');
+const gamesContentContainer = document.getElementById('games-content-container');
+const tutorialsContentContainer = document.getElementById('tutorials-content-container');
+const blogsContentContainer = document.getElementById('blogs-content-container');
+const contactContentContainer = document.getElementById('contact-content-container');
+const backToTopButtonShowThreshold = 100;
+const naviMap = new Map();
 
-let tutorialArticleContainer;
-let tutorialListContainer;
-let blogArticleContainer;
-let blogListContainer;
+let focusedNaviButton = document.getElementById("home");
+let shownContentContainer = homeContentContainer;
+let hashID;
 
+onDOMContentLoaded();
+initializeMaps();
 initializeContent();
 initializeTheme();
 initializeSidebarStyle();
 initializeSidebarToggle();
 initializeDisplayModeToggle();
-initializeNaviButtons();
 initializeIconLinks();
-SetCurrentYear();
+initializeCopyrightInfo();
+test();
+
+function onDOMContentLoaded()
+{
+    window.addEventListener('DOMContentLoaded', function () {
+        if (!window.location.hash) return;
+
+        hashID = window.location.hash.substring(1);
+    })
+}
+
+function initializeMaps()
+{
+    naviMap.set('home', homeContentContainer);
+    naviMap.set('games', gamesContentContainer);
+    naviMap.set('tutorials', tutorialsContentContainer);
+    naviMap.set('blogs', blogsContentContainer);
+    naviMap.set('contact', contactContentContainer);
+}
 
 function initializeContent() {
     let homeHTML;
@@ -31,31 +52,22 @@ function initializeContent() {
         getHtmlContent('files/html/games.html'),
         getHtmlContent('files/html/tutorials.html'),
         getHtmlContent('files/html/blogs.html'),
-        getHtmlContent('files/html/contact.html')])
-        .then(contents => {
+        getHtmlContent('files/html/contact.html')]).then(contents => {
             [homeHTML, gamesHTML, tutorialsHTML, blogsHTML, contactHTML] = contents;
-
-            loadContent(HOME_CONTENT_CONTAINER, homeHTML);
-            loadContent(GAMES_CONTENT_CONTAINER, gamesHTML);
-            loadContent(TUTORIALS_CONTENT_CONTAINER, tutorialsHTML);
-            loadContent(BLOGS_CONTENT_CONTAINER, blogsHTML);
-            loadContent(CONTACT_CONTENT_CONTAINER, contactHTML);
-
-            initializeGameWindow();
-
-            HOME_CONTENT_CONTAINER.style.display = "flex";
-
-            tutorialListContainer = document.getElementById('tutorial-list-container');
-            tutorialArticleContainer = document.getElementById('tutorial-article-container');
-            tutorialArticleContainer.style.display = 'none';
-
-            blogListContainer = document.getElementById('blog-list-container');
-            blogArticleContainer = document.getElementById('blog-article-container');
-            blogArticleContainer.style.display = 'none';
             
+            loadContent(homeContentContainer, homeHTML);
+            loadContent(gamesContentContainer, gamesHTML);
+            loadContent(tutorialsContentContainer, tutorialsHTML);
+            loadContent(blogsContentContainer, blogsHTML);
+            loadContent(contactContentContainer, contactHTML);
+            
+            homeContentContainer.style.display = "flex";
+            
+            initializeGameWindow();
             initializeTutorials();
             initializeBlogs();
-
+            initializeNaviButtons();
+            
         })
         .catch(error => {
             console.error('Error initializing content:', error);
@@ -85,28 +97,53 @@ function initializeContent() {
 
         gameWindowCloseButton.addEventListener("click", function () {
             unloadGame();
+            updateUrlByID("games");
+            
             gameWindow.style.display = "none";
             gameList.style.display = "flex";
+            
+            window.removeEventListener('wheel', disableScroll);
         });
 
         gameList.querySelectorAll('.game-panel').forEach(gamePanel => {
             gamePanel.addEventListener("click", function () {
-                gameWindow.style.display = "flex";
-                gameList.style.display = "none";
-
-                switch (gamePanel.id) {
-                    case 'game-panel-shooting-star':
-                        loadGame("https://itch.io/embed-upload/10078260?color=ffffff");
-                        break;
-                    case 'game-panel-02':
-                        break;
-                    case 'game-panel-03':
-                        break;
-                    default:
-                        break;
-                }
+                updateUrlByID(gamePanel.id);
+                showGameWindow(gamePanel.id);
             })
+            
+            if (hashID && hashID === gamePanel.id)
+            {
+                showGameWindow(hashID);
+                const gamesNaviButton = document.getElementById("games");
+                ShowNaviContent(gamesNaviButton);
+                highlightNaviButton(gamesNaviButton);
+            }
         })
+        
+        function showGameWindow(gamePanelID)
+        {
+            gameWindow.style.display = "flex";
+            gameList.style.display = "none";
+            
+            window.addEventListener('wheel', disableScroll, { passive: false });
+
+            switch (gamePanelID) {
+                case 'game-shooting-star':
+                    loadGame("https://itch.io/embed-upload/10078260?color=ffffff");
+                    break;
+                case 'game-02':
+                    break;
+                case 'game--03':
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        function disableScroll(event)
+        {
+            event.preventDefault();
+        }
 
         function loadGame(path) {
             unloadGame();
@@ -123,6 +160,132 @@ function initializeContent() {
             }
         }
     }
+
+    function initializeTutorials(){
+        const tutorialDirectoryPath = 'tutorials';
+        const tutorialListContainer = document.getElementById('tutorial-list-container');
+        const tutorialArticleContainer = document.getElementById('tutorial-article-container');
+
+        tutorialListContainer.style.display = "flex";
+        tutorialArticleContainer.style.display = 'none';
+        generateArticleList(tutorialDirectoryPath, tutorialListContainer, tutorialArticleContainer);
+
+        const tutorialContentCloseButton = document.getElementById('tutorial-content-close-button');
+        tutorialContentCloseButton.addEventListener('click', function () {
+            tutorialArticleContainer.style.display = "none";
+            tutorialListContainer.style.display = "flex";
+            updateUrlByID("tutorials");
+        });
+            
+        const articleContentContainer = tutorialArticleContainer.querySelector('.article-content-container');
+        const tutorialBackToTopButton = document.getElementById('tutorial-back-to-top-button');
+
+        articleContentContainer.addEventListener('scroll', function () {
+            if (articleContentContainer.scrollTop > backToTopButtonShowThreshold) {
+                tutorialBackToTopButton.style.display = "block";
+            } else {
+                tutorialBackToTopButton.style.display = "none";
+            }
+        });
+        
+        tutorialBackToTopButton.addEventListener('click', function () {
+            articleContentContainer.scrollTop = 0;
+        });
+    }
+
+    function initializeBlogs() {
+        const blogsDirectoryPath = 'blogs';
+        const blogListContainer = document.getElementById('blog-list-container');
+        const blogArticleContainer = document.getElementById('blog-article-container');
+
+        blogListContainer.style.display = "flex";
+        blogArticleContainer.style.display = 'none';
+        generateArticleList(blogsDirectoryPath, blogListContainer, blogArticleContainer);
+
+        const blogContentCloseButton = document.getElementById('blog-content-close-button');
+        blogContentCloseButton.addEventListener('click', function () {
+            blogArticleContainer.style.display = "none";
+            blogListContainer.style.display = "flex";
+            updateUrlByID("blogs");
+        });
+        
+        const articleContentContainer = blogArticleContainer.querySelector('.article-content-container');
+        const blogBackToTopButton = document.getElementById('blog-back-to-top-button');
+        
+        articleContentContainer.addEventListener('scroll', function () {
+            if (articleContentContainer.scrollTop > backToTopButtonShowThreshold) {
+                blogBackToTopButton.style.display = "block";
+            } else {
+                blogBackToTopButton.style.display = "none";
+            }
+        });
+        
+        blogBackToTopButton.addEventListener('click', function () {
+            articleContentContainer.scrollTop = 0;
+        });
+    }
+    
+    function initializeNaviButtons() {
+        const naviButtons = document.querySelectorAll('.navi-button');
+
+        naviButtons.forEach(naviButton => {
+            naviButton.addEventListener('click', () => {
+                if (focusedNaviButton.id === naviButton.id)
+                {
+                    if (focusedNaviButton.id === "home" || focusedNaviButton.id === "contact") return;
+                    
+                    const naviContent = naviMap.get(naviButton.id);
+                    const closeButton = naviContent.querySelector('.close-button');
+                    
+                    if (closeButton) {
+                        closeButton.click();
+                        updateUrlByID(naviButton.id);
+                    }
+                    
+                    return;
+                }
+
+                ShowNaviContent(naviButton);
+                updateUrlByID(focusedNaviButton.id);
+            });
+        });
+        
+        if (hashID)
+        {
+            if (naviMap.get(hashID))
+            {
+                const naviButton = document.getElementById(hashID);
+                ShowNaviContent(naviButton);
+            }
+        }
+        else
+        {
+            highlightNaviButton(focusedNaviButton);
+        }
+    }
+}
+
+function highlightNaviButton(naviButton)
+{
+    naviButton.classList.add('navi-button-focused');
+    naviButton.querySelectorAll('span').forEach(element => {
+        element.classList.add('focused');
+    });
+}
+
+function ShowNaviContent(naviButton)
+{
+    focusedNaviButton.classList.remove('navi-button-focused');
+    focusedNaviButton.querySelectorAll('span').forEach(element => {
+        element.classList.remove('focused');
+    });
+    focusedNaviButton = naviButton;
+
+    highlightNaviButton(naviButton);
+
+    shownContentContainer.style.display = "none";
+    shownContentContainer = naviMap.get(naviButton.id);
+    shownContentContainer.style.display = "flex";
 }
 
 function initializeTheme() {
@@ -147,18 +310,18 @@ function initializeSidebarStyle() {
     let savedSidebarStyle = localStorage.getItem('sidebar-style');
 
     if (savedSidebarStyle === 'closed') {
-        SIDEBAR.classList.add('closed');
+        sideBar.classList.add('closed');
     } else {
-        SIDEBAR.classList.remove('closed');
+        sideBar.classList.remove('closed');
     }
 }
 
 function initializeSidebarToggle() {
     const SIDEBAR_TOGGLE = document.getElementById('sidebar-toggle');
     SIDEBAR_TOGGLE.addEventListener('click', () => {
-        SIDEBAR.classList.toggle('closed');
+        sideBar.classList.toggle('closed');
 
-        if (SIDEBAR.classList.contains('closed')) {
+        if (sideBar.classList.contains('closed')) {
             localStorage.setItem('sidebar-style', 'closed');
         } else {
             localStorage.setItem('sidebar-style', 'open');
@@ -167,9 +330,9 @@ function initializeSidebarToggle() {
 
     const SEARCH_BOX = document.getElementById('sidebar-search-box');
     SEARCH_BOX.addEventListener('click', () => {
-        SIDEBAR.classList.remove('closed');
+        sideBar.classList.remove('closed');
 
-        if (SIDEBAR.classList.contains('closed')) {
+        if (sideBar.classList.contains('closed')) {
             localStorage.setItem('sidebar-style', 'closed');
         } else {
             localStorage.setItem('sidebar-style', 'open');
@@ -199,81 +362,32 @@ function initializeIconLinks() {
     });
 }
 
-function SetCurrentYear() {
+function initializeCopyrightInfo() {
     const PROJECT_START_YEAR = 2024;
     const CURRENT_YEAR = new Date().getFullYear();
     const CURRENT_YEAR_TEXT = document.getElementById('current-year');
     CURRENT_YEAR_TEXT.textContent = CURRENT_YEAR === PROJECT_START_YEAR ? CURRENT_YEAR.toString() : `${PROJECT_START_YEAR} - ${CURRENT_YEAR}`;
 }
 
-function sidebarSearch() {
-
-}
-
-function initializeNaviButtons() {
-    let focusedNaviButton = document.getElementById("navi-home");
-    let shownContentContainer = HOME_CONTENT_CONTAINER;
-    const naviButtons = document.querySelectorAll('.navi-button');
-    const naviMap = new Map();
-
-    naviMap.set('navi-home', HOME_CONTENT_CONTAINER);
-    naviMap.set('navi-games', GAMES_CONTENT_CONTAINER);
-    naviMap.set('navi-tutorials', TUTORIALS_CONTENT_CONTAINER);
-    naviMap.set('navi-blogs', BLOGS_CONTENT_CONTAINER);
-    naviMap.set('navi-contact', CONTACT_CONTENT_CONTAINER);
-
-    naviButtons.forEach(naviButton => {
-        naviButton.addEventListener('click', () => {
-            if (focusedNaviButton.id === naviButton.id) return;
-
-            focusedNaviButton.classList.remove('navi-button-focused');
-            focusedNaviButton.querySelectorAll('span').forEach(element => {
-                element.classList.remove('focused');
-            })
-            focusedNaviButton = naviButton;
-
-            naviButton.classList.add('navi-button-focused');
-            naviButton.querySelectorAll('span').forEach(element => {
-                element.classList.add('focused');
-            })
-
-            shownContentContainer.style.display = "none";
-            shownContentContainer = naviMap.get(naviButton.id);
-            shownContentContainer.style.display = "flex";
-        });
-    });
-
-    document.getElementById("navi-home").classList.add('navi-button-focused');
-    document.getElementById("navi-home").querySelectorAll('span').forEach(element => {
-        element.classList.add('focused');
-    })
-}
-
 function fetchAllFilesInDirectory(directoryPath) {
     function parseFileName(fileName) {
-        // 定义正则表达式来匹配文件名格式
         const regex = /^(.+)\.(\d{4}-\d{2}-\d{2})\.(\d{2})\.(\w+)$/;
-        // 使用正则表达式来匹配文件名
         const match = fileName.match(regex);
 
-        // 如果文件名匹配成功
         if (match) {
-            // 提取文件名的各个部分
-            const realName = match[1]; // 文件的真实名字
-            const updateDate = match[2]; // 文件的更新日期
-            const index = match[3]; // 文件的序号
-            const extension = match[4]; // 文件的拓展名
-
-            // 返回提取的信息
+            const realName = match[1];
+            const updateDate = match[2];
+            const index = match[3];
+            const extension = match[4];
+            
             return {
                 realName: realName,
                 updateDate: updateDate,
                 index: index,
-                extension: extension
+                extension: extension,
             };
         } else {
-            // 如果文件名格式不匹配，返回空对象或者抛出错误，视情况而定
-            console.log(`%cFile [${fileName}] naming format not match...`, 'color: red;');
+            console.error(`File [${fileName}] naming format not match...`);
             return {};
         }
     }
@@ -305,29 +419,26 @@ function fetchAllFilesInDirectory(directoryPath) {
         .then(files => files.flat());
 }
 
-function initializeBlogs() {
-    const blogsDirectoryPath = 'blogs';
-    generateArticleList(blogsDirectoryPath, blogListContainer, blogArticleContainer);
-
-    const blogContentCloseButton = document.getElementById('blog-content-close-button');
-    blogContentCloseButton.addEventListener('click', function () {
-        blogArticleContainer.style.display = "none";
-        blogListContainer.style.display = "flex";
-    });
-}
-
-function initializeTutorials(){
-    const tutorialDirectoryPath = 'tutorials';
-    generateArticleList(tutorialDirectoryPath, tutorialListContainer, tutorialArticleContainer);
-    
-    const tutorialContentCloseButton = document.getElementById('tutorial-content-close-button');
-    tutorialContentCloseButton.addEventListener('click', function (){
-        tutorialArticleContainer.style.display = "none";
-        tutorialListContainer.style.display = "flex";
-    });
-}
-
 function generateArticleList(directoryPath, listContainer, articleContainer) {
+    function sortByUpdateDateAndIndex(files) {
+        files.sort((a, b) => {
+            const aUpdateDate = new Date(a.updateDate);
+            const bUpdateDate = new Date(b.updateDate);
+
+            if (aUpdateDate > bUpdateDate) return -1;
+            if (aUpdateDate < bUpdateDate) return 1;
+
+            return parseInt(b.index) - parseInt(a.index);
+        });
+
+        return files;
+    }
+    
+    function convertMarkDown(contentContainer, markdownContent) {
+        const converter = new showdown.Converter();
+        contentContainer.innerHTML = converter.makeHtml(markdownContent);
+    }
+    
     const articleList = listContainer.querySelector('.article-list');
     const articleContentContainer = articleContainer.querySelector('.article-content-container');
 
@@ -339,12 +450,39 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
             const articleIcon = document.createElement('i');
             const articleLink = document.createElement('a');
             const articleUpdateDate = document.createElement('span');
-
+            const articleID = `${file.updateDate}_${file.index}`;
+            
+            article.id =  articleID;
+            
             articleIcon.classList.add('fa-solid');
             
             articleLink.textContent = file.name;
-            articleLink.href = `#${file.path}`;
+            articleLink.href = `#${articleID}`;
             articleLink.addEventListener('click', () => {
+                ShowArticleContent();
+            });
+
+            articleUpdateDate.textContent = file.updateDate;
+            
+            article.appendChild(articleIcon);
+            article.appendChild(articleLink);
+            article.appendChild(articleUpdateDate);
+            
+            articleList.appendChild(article);
+            
+            if (hashID && hashID === articleID) 
+            {
+                ShowArticleContent();
+                const naviButtonID = getKeyByValue(naviMap, shownContentContainer);
+                const naviButton = document.getElementById(naviButtonID);
+                highlightNaviButton(naviButton);
+            }
+            
+            function ShowArticleContent()
+            {
+                shownContentContainer.style.display = 'none';
+                shownContentContainer = articleContainer.parentElement.parentElement;
+                shownContentContainer.style.display = 'flex';
                 listContainer.style.display = 'none';
                 articleContainer.style.display = 'flex';
 
@@ -358,50 +496,30 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
                     default:
                         break;
                 }
-            });
-
-            articleUpdateDate.textContent = file.updateDate;
+            }
             
-            article.appendChild(articleIcon);
-            article.appendChild(articleLink);
-            article.appendChild(articleUpdateDate);
-            articleList.appendChild(article);
+            function getKeyByValue(map, searchValue) {
+                for (let [key, value] of map.entries()) {
+                    if (value === searchValue) {
+                        return key;
+                    }
+                }
+                return null;
+            }
         });
-
-        function convertMarkDown(contentContainer, markdownContent) {
-            const converter = new showdown.Converter();
-            contentContainer.innerHTML = converter.makeHtml(markdownContent);
-        }
     })
 }
 
-function sortByUpdateDateAndIndex(files) {
-    files.sort((a, b) => {
-        const aUpdateDate = new Date(a.updateDate);
-        const bUpdateDate = new Date(b.updateDate);
-
-        if (aUpdateDate > bUpdateDate) return -1;
-        if (aUpdateDate < bUpdateDate) return 1;
-
-        return parseInt(b.index) - parseInt(a.index);
-    });
-
-    return files;
+function updateUrlByID(id)
+{
+    const currentUrl = window.location.href;
+    const newUrl = currentUrl.split('#')[0] + "#" + id;
+    history.pushState(null, null, newUrl);
 }
 
-// // Test
-// fetchAllFilesInDirectory('blogs').then(files =>
-// {
-//     console.log("原来的文件名列表：");
-//     files.forEach(file =>
-//     {
-//         console.log(file.name);
-//     })
-//
-//     const sortedFiles = sortByUpdateDateAndIndex(files);
-//     console.log("排序后的文件名列表：");
-//     sortedFiles.forEach(file =>
-//     {
-//         console.log(`%c${file.name}`, 'color: red;');
-//     })
-// })
+function sidebarSearch() {
+
+}
+
+function test() {
+}

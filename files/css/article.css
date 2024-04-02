@@ -73,6 +73,7 @@
     padding: 0 3%;
     margin: 1%;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .article-content-container h1, h2, p, a, li
