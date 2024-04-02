@@ -442,6 +442,7 @@ body.dark-mode .display-mode-toggle::before
 
 .back-to-top-button
 {
+    display: none;
     bottom: -12px;
     right: -12px;
 }
