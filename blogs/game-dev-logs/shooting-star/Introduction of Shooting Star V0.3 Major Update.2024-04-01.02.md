@@ -4,7 +4,7 @@
 
 ## 简介 
 
-"Shooting Star" 是我最早制作的 Unity 教程项目。<br>现在回头看，这个项目初始时显得有些稚嫩。<br>经过两年多的学习和开发实践，我觉得有必要对这个项目进行一次较大的更新。<br>因此，在准备了一段时间后，我推出了该项目的 0.3 版本。<br>在这次更新中，我彻底重构了游戏的 UI，并新增了在线排行榜和保存游戏设置的功能。<br>此外，我还对游戏机制进行了一些改进，为之后的更新打下了一些基础。
+"Shooting Star" 是我最早制作的 Unity 教程项目。<br>现在回头看，这个项目多少显得有些稚嫩。<br>经过两年多的学习和开发实践，我觉得有必要对这个项目进行一次较大的更新。<br>因此，在准备了一段时间后，我推出了该项目的 0.3 版本。<br>在这次更新中，我彻底重构了游戏的 UI，并新增了在线排行榜和保存游戏设置的功能。<br>此外，我还对游戏机制进行了一些改进，为之后的更新打下了一些基础。
 
 ![](../../../images/shooting-star/v0.3-marjor-update/2.png)
 
@@ -30,9 +30,11 @@
 
 ## 试玩版同步上线
 
-我还制作了该新版本的试玩版游戏。游戏的下载链接可以在下方找到。<br>同时，我还制作了 WebGL 平台的试玩版游戏，如果您不方便下载游戏，也可以直接在我的个人网页上试玩。<br>如果您感兴趣的话，请务必尝试一下。
+我制作了该新版本的试玩版。游戏的下载链接可以在下方找到。<br>同时，我还制作了 WebGL 平台的试玩版。假如您不方便下载游戏，也可以直接在我的个人网页上试玩。<br>如果您感兴趣的话，还请务必尝试一下。
 
-- [试玩版下载](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
+- 试玩版下载
+  - [Windows](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
+  - [Mac](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Mac_Development.zip)
 - [在我的网页上试玩](https://ryanxudev.github.io/)
 
 ----
@@ -67,7 +69,9 @@ The top 100 players will be displayed on the high score leaderboard.
 
 I have also created a playable demo of the new version. You can find the download link below. <br>Additionally, I have created a WebGL version of the demo, so if you prefer not to download the game, you can try it directly on my website. <br>If you're interested, be sure to give it a try.
 
-- [Playable Demo Download](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
+- Playable Demo Download
+  - [Windows](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
+  - [Mac](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Mac_Development.zip)
 - [Play the WebGL version Demo on my website](https://ryanxudev.github.io/)
 
 ----
