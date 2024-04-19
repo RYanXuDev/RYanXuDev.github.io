@@ -425,6 +425,7 @@ body.dark-mode .display-mode-toggle::before
     text-align: center;
     width: 24px;
     height: 24px;
+    right: -12px;
     font-size: 16px;
     color: var(--sidebar-color);
     background: var(--primary-color);
@@ -437,14 +438,11 @@ body.dark-mode .display-mode-toggle::before
 .close-button
 {
     top: -12px;
-    right: -12px;
 }
 
 .back-to-top-button
 {
-    display: none;
     bottom: -12px;
-    right: -12px;
 }
 
 .close-button:hover,

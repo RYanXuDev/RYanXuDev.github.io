@@ -188,6 +188,7 @@ function initializeContent() {
             }
         });
         
+        tutorialBackToTopButton.style.display = "none";
         tutorialBackToTopButton.addEventListener('click', function () {
             articleContentContainer.scrollTop = 0;
         });
@@ -220,6 +221,7 @@ function initializeContent() {
             }
         });
         
+        blogBackToTopButton.style.display = "none";
         blogBackToTopButton.addEventListener('click', function () {
             articleContentContainer.scrollTop = 0;
         });
