@@ -1,4 +1,4 @@
-# UI 工具包新功能·Part 2
+# UI 工具包新功能·Part 3
 
 ## 引言
 
@@ -11,6 +11,13 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 - 一些新特性 (Attribute) 的使用方法
 
 本教程将结合实际案例来详细的讲解这些新的功能。
+
+---
+
+示例工程文件下载
+
+- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
 
 ---
 

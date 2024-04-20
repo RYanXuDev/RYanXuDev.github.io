@@ -14,6 +14,13 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 ---
 
+示例工程文件下载
+
+- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
+
+---
+
 本教程由三个部分组成，这是第二部分，主要内容是：
 - CreateProperty 与 DontCreateProperty 这两个新特性的作用
 - 新的数据绑定方法其中之一：在 UXML 里绑定数据
