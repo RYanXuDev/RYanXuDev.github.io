@@ -123,7 +123,7 @@ public class CharacterInfoData : ScriptableObject
 感谢您的观看。  
 下一部分我们将学习几个新的特性以及另外两种数据绑定方式。  
 
-- [UI 工具包新功能·第二部分]()
+- [UI 工具包新功能·第二部分](../tutorials/UI工具包新功能 Part 2 另外两种数据绑定方式.2024-04-18.01.md)
 
 ---
 

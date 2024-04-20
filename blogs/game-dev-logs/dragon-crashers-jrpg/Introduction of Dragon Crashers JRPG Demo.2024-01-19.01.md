@@ -1,13 +1,10 @@
 # Introduction of Dragon Crasher JRPG Demo
 
-<iframe
-width="100%"
-height="100%"
-src="https://www.youtube.com/embed/DxM4bM3-O10?si=-l2ia0A9uWBI8496"
-title="YouTube video player"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-allowfullscreen>
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/DxM4bM3-O10?si=ReUdVcL8SBocIRDZ" 
+title="YouTube video player" frameborder="0" allow="accelerometer; 
+autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
 
 ## 新的JRPG战斗系统
