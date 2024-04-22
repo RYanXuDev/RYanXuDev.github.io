@@ -14,14 +14,27 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 ---
 
-示例工程文件下载
+- 示例工程文件下载
 
-- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
+  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+  - [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
 
 ---
 
-本教程由三个部分组成，这是第一部分，主要内容是：   
+- 教程录制直播录像
+  
+  - Day 1:
+    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
+  - Day 2:
+  
+    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+
+---
+
+本教程由三个部分组成，这是第一部分，主要内容是：
+
 - 示例工程的准备
 - 新的数据绑定方式的其中之一：通过 UI 构建器绑定 SO
 
@@ -101,7 +114,7 @@ public class CharacterInfoData : ScriptableObject
 ![绑定选项](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-04.png)
 
 这里我们可以设置该UI元素的数据来源(Data Source)。  
-数我们可以选择使用 SO，或者使用一个类 (Type)。  
+我们可以选择使用 SO，或者使用一个类 (Type)。  
 这里我们使用刚才创建的角色信息数据类 SO。  
 然后我们鼠标右键点击这个标签的 Text 属性，可以发现一个新增加的 “Add Binding...” 选项。  
 点击它，可以打开这个属性的添加绑定窗口。  
@@ -130,7 +143,7 @@ public class CharacterInfoData : ScriptableObject
 感谢您的观看。  
 下一部分我们将学习几个新的特性以及另外两种数据绑定方式。  
 
-- [UI 工具包新功能·第二部分](../tutorials/UI工具包新功能 Part 2 另外两种数据绑定方式.2024-04-18.01.md)
+- [UI 工具包新功能·第二部分]()
 
 ---
 
