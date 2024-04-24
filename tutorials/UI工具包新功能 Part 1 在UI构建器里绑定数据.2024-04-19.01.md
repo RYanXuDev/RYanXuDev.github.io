@@ -86,7 +86,7 @@ public class CharacterInfoData : ScriptableObject
 角色的最大生命值 (characterMaxHealth)  
 角色的当前生命值 (characterHealth)  
 这四个字段。  
-对应的是我们的角色信息画面所需要绑定的四个数据。  
+对应的是我们的角色信息画面所需要绑定的四个 UI 元素。  
 这里，我将这四个私有字段标记为`[SerializeField]` ，将它们序列化。  
 序列化字段的好处之一是我们可以在编辑器里直接为它们赋值。
 
@@ -99,21 +99,21 @@ public class CharacterInfoData : ScriptableObject
 ## 新的数据绑定方式
 
 在新的版本中，开发者现在可以更灵活地进行数据绑定。  
-这一功能极大地简化了UI数据绑定的流程。  
+这一功能极大地简化了 UI 数据绑定的流程。  
 新的数据绑定主要有三种方式：
 
 1. 在 UI 构建器里直接添加数据来源并绑定数据
-2. 在UXML里添加数据绑定的相应内容
-3. 在C#里调用VisualElement.SetBinding()方法为UI元素设置绑定
+2. 在 UXML 里添加数据绑定的相应内容
+3. 在 C# 脚本里调用 VisualElement.SetBinding() 方法为 UI 元素设置绑定
 
 ## 在 UI 构建器里绑定 SO
 
-在新版本的UI Builder里，当我们点击一个UI元素时，可以在观察器(Inspector)的最上面找到一个Bindings选项。  
+在新版本的 UI Builder 里，当我们点击一个 UI 元素时，可以在观察器 (Inspector) 的最上面找到一个 Bindings 选项。  
 我们以角色信息画面的玩家名字文本标签 (CharacterNameText, 这是个 Label) 为例:
 
 ![绑定选项](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-04.png)
 
-这里我们可以设置该UI元素的数据来源(Data Source)。  
+这里我们可以设置该 UI 元素的数据来源 (Data Source)。  
 我们可以选择使用 SO，或者使用一个类 (Type)。  
 这里我们使用刚才创建的角色信息数据类 SO。  
 然后我们鼠标右键点击这个标签的 Text 属性，可以发现一个新增加的 “Add Binding...” 选项。  
@@ -129,7 +129,7 @@ public class CharacterInfoData : ScriptableObject
 
 这样，我们就完成了角色名字标签的 Text 属性和 SO 里的 `characterName` 属性的绑定。  
 可以看到该文本属性的内容以及视口 (Viewport) 里的角色名字都已经变成了 SO 里 `characterName` 这个字段的值。  
-保存HTML回到编辑器，游戏窗口里的 UI 也更新了。  
+保存 UXML 回到编辑器，游戏窗口里的 UI 也更新了。  
 
 比较神奇的是，当我们在编辑器里修改 SO 里的 `characterName` 的值时， 即使不运行游戏，游戏画面里的 UI 也会实时更新。  
 而如果我们绑定的是一个类，那么就必须在游戏运行时这个被绑定的类里的数据发生变动时才能观察到 UI 的变化。  

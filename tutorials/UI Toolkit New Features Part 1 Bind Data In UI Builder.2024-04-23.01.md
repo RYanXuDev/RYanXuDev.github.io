@@ -97,7 +97,7 @@ There are three main ways to achieve this:
 
 - Add data sources and bind data directly in the UI Builder
 - Add corresponding data binding content in UXML
-- Call VisualElement.SetBinding() method in C# to set bindings for UI elements
+- Call VisualElement.SetBinding() method in C# script to set bindings for UI elements
 
 ## Binding SO in UI Builder
 
@@ -122,7 +122,7 @@ Finally, click the "Add Binding" button in the lower right corner.
 
 Now, we have completed the binding of the Text property of the CharacterNameText label to the `characterName` property in the SO.  
 You can see that the content of this text property and the character name in the viewport have been updated to the value of the `characterName` field in the SO.  
-Saving HTML and returning to the editor, the UI in the game window has also been updated.
+Saving UXML and returning to the editor, the UI in the game window has also been updated.
 
 It's quite amazing that when we modify the value of `characterName` property in the SO in the editor, even without running the game, the UI in the game window will be updated in real-time.  
 If we bind the UI property to a Type, then we can only observe the UI changes when the data in the bound class changes during the game.  
