@@ -25,6 +25,13 @@ This tutorial will provide detailed explanations of these new features through p
 
 ---
 
+- Tutorial Videos
+  - Part 1
+    - [YouTube](https://youtu.be/cbQJq_O3ZEo)
+    - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+
+---
+
 The tutorial consists of three parts, and this is the first part, focusing on:
 
 - Preparation of example project
