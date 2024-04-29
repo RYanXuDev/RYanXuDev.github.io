@@ -240,8 +240,8 @@ UI Toolkit UQuery 教程：
   - `dataSourcePath`: 数据来源路径，我们想要传入的是 SO 里的`CharacterHealthString`属性。  
   这里我们直接 new 一个相应的`PropertyPath`类。  
   它的构造函数参数需要传入一个字符串类型的属性路径，同样的我们使用`nameof()`方法来取得`CharacterHealthString`属性的路径。  
-  - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：  
-  
+  - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：
+    
     - TwoWay: 双向绑定。  
     当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
     这个绑定模式适合在某些情况下，比如，一个典型的例子，就是洗点。  

@@ -1,3 +1,13 @@
+a
+{
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: underline;
+}
+
 .list-container
 {
     display: flex;
@@ -76,14 +86,9 @@
     scroll-behavior: smooth;
 }
 
-.article-content-container h1, h2, p, a, li
+.article-content-container h1, h2, p, li
 {
     color: var(--text-color);
-}
-
-.article-content-container a:hover
-{
-    color: var(--primary-color);
 }
 
 .article-content-container h1, h2
@@ -127,6 +132,11 @@
     color: var(--link-color);
 }
 
+.article-content-container a:hover
+{
+    color: var(--primary-color);
+}
+
 .article-content-container img
 {
     max-width: 100%;
@@ -136,46 +146,47 @@
     overflow: clip;
 }
 
+.article-content-container pre, .article-content-container code
+{
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    color: var(--code-color);
+    background-color: var(--body-color);
+}
+
 .article-content-container pre
 {
     margin: 1em 0 2em 0;
     padding: 1.5em 2em;
-    background-color: var(--body-color);
     border-radius: 5px;
     display: block;
-    font-family: monospace;
-    font-size: 0.8em;
+    font-size: 0.85em;
     unicode-bidi: isolate;
     white-space: pre;
-}
-
-.article-content-container code 
-{
-    padding: 0.3em;
-    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-    font-size: .95em;
-    color: var(--code-color);
-    background-color: var(--body-color);
-    border-radius: 3px;
-}
-
-.article-content-container code[class*=language-], .article-content-container pre[class*=language-] 
-{
-    color: var(--code-color);
-    background: 0 0;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     text-align: left;
-    white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
     line-height: 1.4;
-    -moz-tab-size: 8;
     tab-size: 8;
+    -moz-tab-size: 8;
+    hyphens: none;
     -webkit-hyphens: none;
     -moz-hyphens: none;
     -ms-hyphens: none;
-    hyphens: none;
+}
+
+.article-content-container pre code
+{
+    padding: 0;
+    margin: 0;
+}
+
+.article-content-container code 
+{
+    padding: 0.2em 0.25em;
+    margin: 0 0.1em;
+    font-size: 0.9em;
+    border-radius: 3px;
 }
 
 .article-content-container ol 
