@@ -14,22 +14,21 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 ---
 
-- 示例工程文件下载
+示例工程文件下载：
 
-  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
+- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
 
 ---
 
-- 教程录制直播录像
+教程录制直播录像：
 
-  - Day 1:
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
-  - Day 2:
-
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+- Day 1:
+  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+  - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
+- Day 2:
+  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+  - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
 ---
 
@@ -70,8 +69,7 @@ OK，我们将角色等级标签的文本属性与 SO 里的`characterLevel`字�
 我们使用字符串插值 (String Interpolation) 来为这个属性赋值。  
 双引号里可以按我们所需要的格式来输入其他字符，在花括号里传入`characterLevel`这个字段，这样就可以了。
 
-```csharp
-
+```C#
 string CharacterLevelString => $"Level: {characterLevel}";
 ```
 
@@ -84,8 +82,7 @@ string CharacterLevelString => $"Level: {characterLevel}";
 
 其实很简单，我们只需要给这个属性添加一个`[CreateProperty]`特性就可以了。
 
-```csharp
-
+```C#
 using Unity.Properties;
 
 [CreateProperty] string CharacterLevelString => $"Level: {characterLevel}";
@@ -104,8 +101,7 @@ Perfect!
 
 我对`characterName`和`characterMaxHealth`也进行类似操作，声明了它们相应的字符串属性。
 
-```csharp
-
+```C#
 [CreateProperty] string CharacterNameString => $"Name: {characterName}";
 [CreateProperty] string CharacterMaxHealthString => $"Max Health: {characterMaxHealth}";
 ```
@@ -125,8 +121,7 @@ Perfect!
 但其实我们并不想要绑定这四个字段，因为它们并不符合我们的需求。  
 因此，我们可以为这四个序列化字段添加`DontCreateProperty`特性，让它们不要创建出列化属性。
 
-```csharp
-
+```C#
 using Unity.Properties;
 using UnityEngine;
 
@@ -148,7 +143,7 @@ using UnityEngine;
 点击 UI 构建器视口底下的这个按钮可以在 IDE 里打开 UXML 文件。  
 顺带一提，另一边的这个按钮打开的是当前激活中的 USS 文件。
 
-![HTML &. Uss Previews](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-07.png)
+![HTML &. Uss Preview](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-07.png)
 
 在新版本的UXML文件当中，开发者可以直接在代码中添加`<Bindings>`声明来为 UI 元素添加数据绑定。  
 我们观察一下之前在 UI 构建器里已经添加好绑定的两个标签，可以看到，它们都已经拥有了这部分代码块。  
@@ -188,8 +183,7 @@ OK，我们保存 UXML，回到 UI 构建器。
 我们在角色信息数据类里添加一个角色生命值字符串 (CharacterHealthString) 属性。  
 它的值我们把它写成这样：
 
-```csharp
-
+```C#
 [CreateProperty] public string CharacterHealthString => $"Health: {characterHealth} / {characterMaxHealth}";
 ```
 
@@ -203,8 +197,7 @@ OK，接下来我们创建一个 C# 脚本名为 CharacterInfoUI。
 
 在这个类的`OnEnable()`函数当中，首先，我们通过 UQuery 获取到所需要的角色当前生命值标签。
 
-```csharp
-
+```C#
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -221,10 +214,10 @@ public class CharacterInfoUI : MonoBehaviour
 关于 UQuery 这里我也不再多说了，我在以前的教程视频中有过非常详细的讲解。  
 如果你没有这方面的知识，还请参考我制作的教程视频。  
 
-- UI Toolkit UQuery 教程
+UI Toolkit UQuery 教程：
 
-  - [YouTube](https://youtu.be/DOn8P5Fg0gg)
-  - [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
+- [YouTube](https://youtu.be/DOn8P5Fg0gg)
+- [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
 
 然后，我们调用该标签的`SetBinding()`方法来为它设置绑定。  
 这是在 2023.2 版本之后新增加的一个 API。  
@@ -240,8 +233,7 @@ public class CharacterInfoUI : MonoBehaviour
 
   - `dataSource`: 数据来源，我们可以声明并使用一个序列化的角色信息数据类字段。
 
-    ```csharp
-
+    ```C#
     [SerializeField] CharacterInfoData characterInfoData;
     ```
 
@@ -267,8 +259,7 @@ public class CharacterInfoUI : MonoBehaviour
   
     这里的绑定模式参数，我们传入`BindingMode.ToTarget`, 大家在实际运用中可以按需求来选择其他的模式。  
 
-```csharp
-a
+```C#
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -307,8 +298,7 @@ OK，这样我们就在设置好了角色生命值标签的 text 属性的数据
 
 为了方便观察 UI 的变化，我在`CharacterInfoData`类里为`characterHealth`字段写了一个公有属性：
 
-```csharp
-
+```C#
 public class CharacterInfoData : ScriptableObject
 {
     public int CharacterHealth
@@ -325,8 +315,7 @@ public class CharacterInfoData : ScriptableObject
 
 然后在`CharacterInfoUI`里的`Update()`里写了一些 Debug 代码用来模拟角色生命值的变化：
 
-```csharp
-
+```C#
 public class CharacterInfoUI : MonoBehaviour
 {
     [SerializeField] CharacterInfoData characterInfoData;
