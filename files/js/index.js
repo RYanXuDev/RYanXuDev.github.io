@@ -438,7 +438,7 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
     
     function convertMarkDown(contentContainer, markdownContent) {
         const converter = new showdown.Converter();
-        converter.setOption('disableForced4SpacesIndentedSublists', true);
+        converter.setOption("disableForced4SpacesIndentedSublists", true);
         contentContainer.innerHTML = converter.makeHtml(markdownContent);
     }
     

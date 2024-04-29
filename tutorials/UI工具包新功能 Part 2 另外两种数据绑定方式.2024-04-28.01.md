@@ -24,11 +24,11 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 教程录制直播录像：
 
 - Day 1:  
-  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
+    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
 - Day 2:  
-  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
 ---
 
@@ -224,39 +224,39 @@ UI Toolkit UQuery 教程：
 它要求传入两个参数：
 
 - 第一个参数是一个`UIElements.BindingId`类，这个参数是我们所需要绑定的 UI 元素的属性的 ID。  
-这里我们要绑定的是角色生命值标签的 text 属性。  
-我们可以直接传入一个`"text"`字符串，它会自动的转换成该标签 text 属性的 ID.  
-但一直以来，我个人都不是很喜欢使用字符串参数，因此这里我一般会使用 `nameof()` 方法来获取到这个 ID.
+  这里我们要绑定的是角色生命值标签的 text 属性。  
+  我们可以直接传入一个`"text"`字符串，它会自动的转换成该标签 text 属性的 ID.  
+  但一直以来，我个人都不是很喜欢使用字符串参数，因此这里我一般会使用 `nameof()` 方法来获取到这个 ID.
 - 第二个参数是一个 `UIElements.Binding` 类，用来传入具体的数据绑定的信息。  
-对于这个参数我们可以 new 一个 `DataBinding` 类，这个类继承自 `UIElements.Binding`.  
-在这个参数的对象初始化器 (Object Initializer) 里，我们为几个关键的属性赋值：  
-
-  - `dataSource`: 数据来源，我们可以声明并使用一个序列化的角色信息数据类字段。
+  对于这个参数我们可以 new 一个 `DataBinding` 类，这个类继承自 `UIElements.Binding`.  
+  在这个参数的对象初始化器 (Object Initializer) 里，我们为几个关键的属性赋值：
+  
+    - `dataSource`: 数据来源，我们可以声明并使用一个序列化的角色信息数据类字段。
 
     ```C#
     [SerializeField] CharacterInfoData characterInfoData;
     ```
 
-  - `dataSourcePath`: 数据来源路径，我们想要传入的是 SO 里的`CharacterHealthString`属性。  
+    - `dataSourcePath`: 数据来源路径，我们想要传入的是 SO 里的`CharacterHealthString`属性。  
   这里我们直接 new 一个相应的`PropertyPath`类。  
   它的构造函数参数需要传入一个字符串类型的属性路径，同样的我们使用`nameof()`方法来取得`CharacterHealthString`属性的路径。  
-  - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：
-    
-    - TwoWay: 双向绑定。  
-    当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
-    这个绑定模式适合在某些情况下，比如，一个典型的例子，就是洗点。  
-    当玩家进行洗点的时候， UI 的数值以及玩家的属性值数据都应该同步的更新。
-    - ToSource: 绑定到数据来源。  
-    当被绑定的 UI 元素的属性值变化时，数据来源的值会相应的更新。  
-    反之，当源数据发生变化时，UI 则不会跟着更新。  
-    例如，游戏设置画面的音量滑动条 (Slider) ，我们只想要通过拉动滑动条来改变音量，而不想要反过来影响到 UI。
-    - ToTarget: 绑定到数据来源的目标属性。  
-    只有当数据来源的属性值变化时，UI 才会跟着更新。  
-    在大部分的情况下，都是 UI 响应游戏数据的变化。  
-    因此，这是我们的最常用的一种绑定模式。
-    - ToTargetOnce: 同样的，绑定到目标属性，但是 UI 只会更新一次，下一次当源数据产生变化时，UI 就不会再更新了。  
-    这个绑定模式在某些特定的情况下会用到，比如玩家的成就 UI 画面。  
-    当玩家达成某个成就之后只需要更新一次 UI，后续无论源数据如何变化我们都不需要管了。
+    - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：
+
+        - TwoWay: 双向绑定。  
+        当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
+        这个绑定模式适合在某些情况下，比如，一个典型的例子，就是洗点。  
+        当玩家进行洗点的时候， UI 的数值以及玩家的属性值数据都应该同步的更新。
+        - ToSource: 绑定到数据来源。  
+        当被绑定的 UI 元素的属性值变化时，数据来源的值会相应的更新。  
+        反之，当源数据发生变化时，UI 则不会跟着更新。  
+        例如，游戏设置画面的音量滑动条 (Slider) ，我们只想要通过拉动滑动条来改变音量，而不想要反过来影响到 UI。
+        - ToTarget: 绑定到数据来源的目标属性。  
+        只有当数据来源的属性值变化时，UI 才会跟着更新。  
+        在大部分的情况下，都是 UI 响应游戏数据的变化。  
+        因此，这是我们的最常用的一种绑定模式。
+        - ToTargetOnce: 同样的，绑定到目标属性，但是 UI 只会更新一次，下一次当源数据产生变化时，UI 就不会再更新了。  
+        这个绑定模式在某些特定的情况下会用到，比如玩家的成就 UI 画面。  
+        当玩家达成某个成就之后只需要更新一次 UI，后续无论源数据如何变化我们都不需要管了。
   
     这里的绑定模式参数，我们传入`BindingMode.ToTarget`, 大家在实际运用中可以按需求来选择其他的模式。  
 
