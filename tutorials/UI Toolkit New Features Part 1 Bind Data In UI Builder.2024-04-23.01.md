@@ -58,7 +58,7 @@ In the example scene, I created a game object with a UI Document component.
 (right-click in the Hierarchy - UI Toolkit - UI Document)  
 I named it Sample UI.  
 I set the Source Asset of the UI Document component to the UXML file we created for the Character Info screen,  
-so the UI will be displayed in the game window.
+so the UI will be displayed in the game view.
 
 ![UI Ready](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-02.png)
 
@@ -102,7 +102,7 @@ Now our initial project is ready.
 In the new version of UI Toolkit, developers can now bind data more flexibly, greatly simplifying the process of UI data binding.  
 There are three main ways to achieve this:
 
-- Add data sources and bind data directly in the UI Builder
+- Add a data source and bind data directly in the UI Builder
 - Add corresponding data binding content in UXML
 - Call VisualElement.SetBinding() method in C# script to set bindings for UI elements
 
@@ -129,9 +129,9 @@ Finally, click the "Add Binding" button in the lower right corner.
 
 Now, we have completed the binding of the Text property of the CharacterNameText label to the `characterName` property in the SO.  
 You can see that the content of this text property and the character name in the viewport have been updated to the value of the `characterName` field in the SO.  
-Saving UXML and returning to the editor, the UI in the game window has also been updated.
+Returning to the editor, the UI in the game view has also been updated.
 
-It's quite amazing that when we modify the value of `characterName` property in the SO in the editor, even without running the game, the UI in the game window will be updated in real-time.  
+It's quite amazing that when we modify the value of `characterName` property in the SO in the editor, even without running the game, the UI in the game view will be updated in real-time.  
 If we bind the UI property to a Type, then we can only observe the UI changes when the data in the bound class changes during the game.  
 This is one of the advantages of binding to a SO compared to binding to a Type.  
 It's very useful for both programmers and non-programming designers.  
@@ -141,7 +141,7 @@ Therefore, I personally recommend using the method of binding to SO for UI data 
 
 This concludes the first part of the tutorial.  
 Thank you for watching.  
-In the next part, we will learn about several new features and the other two data binding methods.
+In the next part, we will learn about some new attributes and the other two data binding methods.
 
 - [UI Toolkit New Features Part 2]()
 
