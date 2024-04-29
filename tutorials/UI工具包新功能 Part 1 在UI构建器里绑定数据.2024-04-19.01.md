@@ -14,29 +14,29 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 ---
 
-- 示例工程文件下载
+示例工程文件下载：
 
-  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
-
----
-
-- 教程录制直播录像
-  
-  - Day 1:
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
-  - Day 2:
-  
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
 
 ---
 
-- 视频教程
-  - Part 1
-    - [YouTube](https://youtu.be/cbQJq_O3ZEo)
-    - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+教程录制直播录像：
+
+- Day 1:
+  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+  - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
+- Day 2:
+  - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+  - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+
+---
+
+视频教程：
+
+- Part 1
+  - [YouTube](https://youtu.be/cbQJq_O3ZEo)
+  - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
 
 ---
 
