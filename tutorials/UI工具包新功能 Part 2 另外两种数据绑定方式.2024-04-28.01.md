@@ -23,10 +23,10 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 教程录制直播录像：
 
-- Day 1:
+- Day 1:  
   - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
-- Day 2:
+  - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
+- Day 2:  
   - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
   - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
@@ -229,7 +229,7 @@ UI Toolkit UQuery 教程：
 但一直以来，我个人都不是很喜欢使用字符串参数，因此这里我一般会使用 `nameof()` 方法来获取到这个 ID.
 - 第二个参数是一个 `UIElements.Binding` 类，用来传入具体的数据绑定的信息。  
 对于这个参数我们可以 new 一个 `DataBinding` 类，这个类继承自 `UIElements.Binding`.  
-在这个参数的对象初始化器 (Object Initializer) 里，我们为几个关键的属性赋值：
+在这个参数的对象初始化器 (Object Initializer) 里，我们为几个关键的属性赋值：  
 
   - `dataSource`: 数据来源，我们可以声明并使用一个序列化的角色信息数据类字段。
 
@@ -240,7 +240,8 @@ UI Toolkit UQuery 教程：
   - `dataSourcePath`: 数据来源路径，我们想要传入的是 SO 里的`CharacterHealthString`属性。  
   这里我们直接 new 一个相应的`PropertyPath`类。  
   它的构造函数参数需要传入一个字符串类型的属性路径，同样的我们使用`nameof()`方法来取得`CharacterHealthString`属性的路径。  
-  - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：
+  - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：  
+  
     - TwoWay: 双向绑定。  
     当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
     这个绑定模式适合在某些情况下，比如，一个典型的例子，就是洗点。  
