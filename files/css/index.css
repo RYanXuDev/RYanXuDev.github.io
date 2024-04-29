@@ -10,13 +10,13 @@
 
 :root
 {
-    --body-color: #f8f4f2;
+    --body-color: #faf7f2;
     --sidebar-color: #fafafa;
     --primary-color: rgba(100, 180, 255, 0.9);
     --primary-color-light: #d1f1ff;
     --border-color: rgba(190, 191, 199, 0.2);
     --toggle-color: #DDD;
-    --text-color: #646464;
+    --text-color: #323232;
     --link-color: #4c84eb;
     --code-color: #043e88;
     --shadow: rgba(0, 0, 0, 0.5);
