@@ -14,21 +14,21 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 ---
 
-示例工程文件下载：
+- 示例工程文件下载：
 
-- [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-- [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
+    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102677647?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - [爱发电](https://afdian.net/p/379c052cfe9311ee8c5652540025c377)
 
 ---
 
-教程录制直播录像：
+- 教程录制直播录像：
 
-- Day 1:  
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
-- Day 2:  
-    - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-    - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
+    - Day 1:  
+        - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+        - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
+    - Day 2:  
+        - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+        - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
 ---
 
@@ -49,7 +49,7 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 可以看到，角色信息画面的根元素是这个 Background，其他的所有的 UI 元素都是位于这个背景底下的，也就是说都是它的子元素。  
 因此，我们可以将这个 Background 的数据来源设为我们的角色信息数据类 SO.  
-这么做，是因为我们要利用 UI 元素数据来源的一个特点：它会从父级元素开始向下传递。  
+这么做，是因为我们要利用数据来源的一个特点：它会从父级元素开始向下传递。  
 也就是说，子元素将会继承父元素的数据来源，直到子元素对原有的数据来源进行重写。  
 我们这个 UI 所需要的数据都来自于这个角色信息数据类 SO，因此我们只需要将这个背景元素的数据来源设为这个 SO 就可以了。  
 右键角色名字标签的数据来源，或者点击它左边的选项按钮，我们选择重置掉这个标签的数据来源。  
@@ -88,15 +88,15 @@ using Unity.Properties;
 [CreateProperty] string CharacterLevelString => $"Level: {characterLevel}";
 ```
 
-保存脚本，可以看到，这个角色等级字符串属性现在出现在数据来源路径里了。  
+保存脚本，可以看到，这个角色等级字符串属性出现在数据来源路径里了。  
 我们将它和角色等级标签的文本属性进行绑定。  
-这个标签的内容就会变成了我们所想要的样子。  
-当我们在 SO 里修改`characterLevel`字段的值时，Game View 里的 UI 同样会实时的更新。
+这个标签的内容就会变成我们所想要的样子。  
+当我们在 SO 里修改`characterLevel`字段的值时，Game View 里的 UI 同样也会实时的更新。
 
 Perfect!  
 这里，我们结合使用了 C# 属性以及`[CreateProperty]`特性。  
 通过这个组合，我们可以在不改变已声明的序列化字段的情况下得到一个我们所需要的用来进行 UI 数据绑定的属性。  
-序列化字段负责曝露到编辑器中方便为它赋值，而`[CreateProperty]`属性则负责绑定到 UI 元素。  
+序列化字段负责曝露到编辑器中方便为它赋值，而标记为`[CreateProperty]`的属性则负责绑定到 UI 元素。  
 我们还发挥了C# 属性的特点，让它对原始数据进行处理，从而转换成我们所需要的格式。  
 
 我对`characterName`和`characterMaxHealth`也进行类似操作，声明了它们相应的字符串属性。
@@ -111,7 +111,7 @@ Perfect!
 
 ## DontCreateProperty 特性
 
-接下来我们再来介绍另一个特性：`DontCreateProperty`.  
+接下来我们来介绍另一个特性：`DontCreateProperty`.  
 如它的名字所示，它的意思就是不要创建属性。  
 这个特性的作用和`CreateProperty`特性的作用是相反的。  
 `CreateProperty`特性用来标记无法被 Unity 序列化的成员，让它生成一个序列化属性。  
@@ -119,7 +119,7 @@ Perfect!
 没错，比如我们在角色信息数据类里写的这四个序列化字段。  
 现在，我们可以在数据来源路径里找到这四个序列化字段。  
 但其实我们并不想要绑定这四个字段，因为它们并不符合我们的需求。  
-因此，我们可以为这四个序列化字段添加`DontCreateProperty`特性，让它们不要创建出列化属性。
+因此，我们可以为这四个序列化字段添加`DontCreateProperty`特性，让它们不要创建出序列化属性。
 
 ```C#
 using Unity.Properties;
@@ -187,8 +187,8 @@ OK，我们保存 UXML，回到 UI 构建器。
 [CreateProperty] public string CharacterHealthString => $"Health: {characterHealth} / {characterMaxHealth}";
 ```
 
-通过斜杠连接角色的当前生命值与最大生命值，这种格式会更符合一般游戏里角色当前生命值的显示样式。  
-由于这个属性我们要在另一个类当中调用，因此这里我们将它标记为 public.
+通过`/`连接角色的当前生命值与最大生命值，这种格式会更符合一般游戏里角色当前生命值的显示样式。  
+由于这个属性我们要在另一个类当中调用，因此这里我们将它标记为`public`.
 
 OK，接下来我们创建一个 C# 脚本名为 CharacterInfoUI。  
 将这个脚本挂载到 Sample UI 游戏对象上。  
@@ -214,10 +214,10 @@ public class CharacterInfoUI : MonoBehaviour
 关于 UQuery 这里我也不再多说了，我在以前的教程视频中有过非常详细的讲解。  
 如果你没有这方面的知识，还请参考我制作的教程视频。  
 
-UI Toolkit UQuery 教程：
+- UI Toolkit UQuery 教程：
 
-- [YouTube](https://youtu.be/DOn8P5Fg0gg)
-- [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
+    - [YouTube](https://youtu.be/DOn8P5Fg0gg)
+    - [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
 
 然后，我们调用该标签的`SetBinding()`方法来为它设置绑定。  
 这是在 2023.2 版本之后新增加的一个 API。  
@@ -244,7 +244,7 @@ UI Toolkit UQuery 教程：
 
         - TwoWay: 双向绑定。  
         当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
-        这个绑定模式适合在某些情况下，比如，一个典型的例子，就是洗点。  
+        这个绑定模式适合在某些情况下使用，一个典型的例子，就是洗点。  
         当玩家进行洗点的时候， UI 的数值以及玩家的属性值数据都应该同步的更新。
         - ToSource: 绑定到数据来源。  
         当被绑定的 UI 元素的属性值变化时，数据来源的值会相应的更新。  
@@ -253,10 +253,10 @@ UI Toolkit UQuery 教程：
         - ToTarget: 绑定到数据来源的目标属性。  
         只有当数据来源的属性值变化时，UI 才会跟着更新。  
         在大部分的情况下，都是 UI 响应游戏数据的变化。  
-        因此，这是我们的最常用的一种绑定模式。
+        因此，这是我们最常用的一种绑定模式。
         - ToTargetOnce: 同样的，绑定到目标属性，但是 UI 只会更新一次，下一次当源数据产生变化时，UI 就不会再更新了。  
-        这个绑定模式在某些特定的情况下会用到，比如玩家的成就 UI 画面。  
-        当玩家达成某个成就之后只需要更新一次 UI，后续无论源数据如何变化我们都不需要管了。
+        这个绑定模式在某些特定的情况下会用到，比如玩家的成就 UI。  
+        当玩家达成某个成就之后只需要更新一次 UI，后续无论源数据如何变化我们都不需要管。
   
     这里的绑定模式参数，我们传入`BindingMode.ToTarget`, 大家在实际运用中可以按需求来选择其他的模式。  
 
@@ -284,7 +284,7 @@ public class CharacterInfoUI : MonoBehaviour
 }
 ```
 
-OK，这样我们就在设置好了角色生命值标签的 text 属性的数据绑定。
+OK，这样我们就设置好了角色生命值标签的 text 属性的数据绑定。
 
 这里给出上面所用到的API的文档链接，大家如果有需要的话请自行前往查看学习：
 
@@ -352,9 +352,15 @@ public class CharacterInfoUI : MonoBehaviour
 在下一部分的教程中，我们将继续学习新的自定义控件的创建方式，并对之前所学的所有知识进行总结运用。
 
 希望本教程对你有所帮助。  
-如果你觉得本教程还不错，还请记得帮我点个赞。  
+如果你觉得本教程还不错，还请记得帮我点个赞。
+
 感谢您的观看。  
 我们下次见。
+
+---
+
+- [Unity UI 工具包新功能教程 - Part 1](https://ryanxudev.github.io/#2024-04-19_01)
+- [Unity UI 工具包新功能教程 - Part 3](https://ryanxudev.github.io/#2024-04-18_02)
 
 ---
 
