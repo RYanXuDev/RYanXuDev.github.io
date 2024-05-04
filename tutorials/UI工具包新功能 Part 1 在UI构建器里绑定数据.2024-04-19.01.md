@@ -34,9 +34,12 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 - 视频教程：
 
-  - Part 1
-      - [YouTube](https://youtu.be/cbQJq_O3ZEo)
-      - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+    - Part 1
+        - [YouTube](https://youtu.be/cbQJq_O3ZEo)
+        - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+    - Part 2
+        - [YouTube](https://youtu.be/eBda493MQHo)
+        - [Bilibili](https://www.bilibili.com/video/BV1WD421T7oq/)
 
 ---
 
