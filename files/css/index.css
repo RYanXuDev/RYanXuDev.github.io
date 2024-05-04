@@ -444,6 +444,8 @@ body.dark-mode .display-mode-toggle::before
     {
         display: flex;
         flex-direction: row;
+        position: sticky;
+        bottom: 0;
         width: 100%;
         height: auto;
         align-items: center;
