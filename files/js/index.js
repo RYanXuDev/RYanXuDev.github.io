@@ -11,6 +11,10 @@ let focusedNaviButton = document.getElementById("home");
 let shownContentContainer = homeContentContainer;
 let hashID;
 
+import { updateUrlByID } from "./utility.js";
+import { getKeyByValue } from "./utility.js";
+import { fetchAllFilesInDirectory } from "./file.js";
+
 onDOMContentLoaded();
 initializeMaps();
 initializeContent();
@@ -20,7 +24,6 @@ initializeSidebarToggle();
 initializeDisplayModeToggle();
 initializeIconLinks();
 initializeCopyrightInfo();
-test();
 
 function onDOMContentLoaded()
 {
@@ -109,7 +112,7 @@ function initializeContent() {
             gamePanel.addEventListener("click", function () {
                 updateUrlByID(gamePanel.id);
                 showGameWindow(gamePanel.id);
-            })
+            });
             
             if (hashID && hashID === gamePanel.id)
             {
@@ -118,7 +121,7 @@ function initializeContent() {
                 ShowNaviContent(gamesNaviButton);
                 highlightNaviButton(gamesNaviButton);
             }
-        })
+        });
         
         function showGameWindow(gamePanelID)
         {
@@ -371,56 +374,6 @@ function initializeCopyrightInfo() {
     CURRENT_YEAR_TEXT.textContent = CURRENT_YEAR === PROJECT_START_YEAR ? CURRENT_YEAR.toString() : `${PROJECT_START_YEAR} - ${CURRENT_YEAR}`;
 }
 
-function fetchAllFilesInDirectory(directoryPath) {
-    function parseFileName(fileName) {
-        const regex = /^(.+)\.(\d{4}-\d{2}-\d{2})\.(\d{2})\.(\w+)$/;
-        const match = fileName.match(regex);
-
-        if (match) {
-            const realName = match[1];
-            const updateDate = match[2];
-            const index = match[3];
-            const extension = match[4];
-            
-            return {
-                realName: realName,
-                updateDate: updateDate,
-                index: index,
-                extension: extension,
-            };
-        } else {
-            console.error(`File [${fileName}] naming format not match...`);
-            return {};
-        }
-    }
-
-    const apiURL = "https://api.github.com/repos/RYanXuDev/RYanXuDev.github.io/contents/" + directoryPath;
-    return fetch(apiURL)
-        .then(response => response.json())
-        .then(data => {
-            const files = data.filter(item => item.type === 'file');
-            const directories = data.filter(item => item.type === 'dir');
-            const filePromises = files.map(file => {
-                const fileInfo = parseFileName(file.name);
-                if (fileInfo === {}) return;
-                return fetch(file.download_url)
-                    .then(response => response.text())
-                    .then(content => ({
-                        path: file.path,
-                        name: fileInfo.realName,
-                        updateDate: fileInfo.updateDate,
-                        index: fileInfo.index,
-                        extension: fileInfo.extension,
-                        content: content
-                    }));
-            });
-            const directoryPromises = directories.map(dir => fetchAllFilesInDirectory(directoryPath + '/' + dir.name));
-
-            return Promise.all([...filePromises, ...directoryPromises]);
-        })
-        .then(files => files.flat());
-}
-
 function generateArticleList(directoryPath, listContainer, articleContainer) {
     function sortByUpdateDateAndIndex(files) {
         files.sort((a, b) => {
@@ -460,7 +413,7 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
             articleIcon.classList.add('fa-solid');
             
             articleLink.textContent = file.name;
-            articleLink.href = `#${articleID}`;
+            articleLink.href = `#${directoryPath}/${file.sha}`;
             articleLink.addEventListener('click', () => {
                 ShowArticleContent();
             });
@@ -500,29 +453,10 @@ function generateArticleList(directoryPath, listContainer, articleContainer) {
                         break;
                 }
             }
-            
-            function getKeyByValue(map, searchValue) {
-                for (let [key, value] of map.entries()) {
-                    if (value === searchValue) {
-                        return key;
-                    }
-                }
-                return null;
-            }
         });
     })
 }
 
-function updateUrlByID(id)
-{
-    const currentUrl = window.location.href;
-    const newUrl = currentUrl.split('#')[0] + "#" + id;
-    history.pushState(null, null, newUrl);
-}
-
-function sidebarSearch() {
-
-}
-
-function test() {
-}
+// function sidebarSearch() {
+//
+// }
