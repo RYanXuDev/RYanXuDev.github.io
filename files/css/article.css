@@ -210,6 +210,12 @@ a:hover
     border: 1px inset var(--border-color);
 }
 
+.article-content-container summary
+{
+    color: var(--link-color);
+    font-size: 0.9em;
+}
+
 ::-webkit-scrollbar
 {
     width: 0.5em;
