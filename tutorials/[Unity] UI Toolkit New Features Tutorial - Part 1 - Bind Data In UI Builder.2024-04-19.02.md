@@ -1,6 +1,11 @@
-# UI Toolkit New Features Part 1
+# [Unity] UI Toolkit New Features Tutorial | Part 1
 
-## Introduction
+---
+
+## Intro
+
+<details>
+<summary>Tutorial Overview (Click to Expand / Collapse)</summary>
 
 Yes, indeed!  
 The UI Toolkit in Unity introduced some key new features after version 2023.2.  
@@ -20,22 +25,37 @@ This tutorial will provide detailed explanations of these new features through p
 
 - Tutorial recording live stream:
 
-  - [Day 1](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-  - [Day 2](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - Day 1:
+        - [Bilibili](https://www.bilibili.com/video/BV1Pt421j7DX/)
+        - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
+    - Day 2:
+        - [Bilibili](https://www.bilibili.com/video/BV13t421A7y5/)
+        - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
 
 ---
 
-- Tutorial Videos
-  - Part 1
-    - [YouTube](https://youtu.be/cbQJq_O3ZEo)
-    - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+- Tutorial Videos：
+
+    - Part 1
+        - [YouTube](https://youtu.be/cbQJq_O3ZEo)
+        - [Bilibili](https://www.bilibili.com/video/BV1Jr421g7Lr/)
+    - Part 2
+        - [YouTube](https://youtu.be/eBda493MQHo)
+        - [Bilibili](https://www.bilibili.com/video/BV1WD421T7oq/)
+    - Part 3
+        - [YouTube](https://youtu.be/Z9AVTt4zZck)
+        - [Bilibili](https://www.bilibili.com/video/BV1Ui421Q7HP/)
+
+</details>
 
 ---
 
-The tutorial consists of three parts, and this is the first part, focusing on:
+This tutorial consists of three parts, and this is the first part, focusing on:
 
 - Preparation of example project
 - One of the new data binding methods: Binding Scriptable Objects via the UI Builder
+
+---
 
 ## Preparation of Example Project
 
@@ -49,10 +69,15 @@ Firstly, I created a UXML, which is a simple Character Info screen.
 ![Character Info Screen](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-01.png)
 
 I won't explain the UI building process here, as I have detailed explanations in my previous video tutorials.  
-If you need to learn from scratch how to create UI using the UI Builder, you can refer to my previous video tutorials:
+If you need to learn from scratch how to create UI using the UI Builder, you can refer to my previous video tutorials.
+
+<details>
+<summary>UI Toolkit Basic Tutorial (Click to Expand / Collapse)</summary>
 
 - [YouTube](https://www.youtube.com/playlist?list=PLrn_k3ArwNC1l_upOeWPdfRyLcXBuE-tx)
 - [Bilibili](https://www.bilibili.com/video/BV1pK411m7n9/)
+
+</details>
 
 In the example scene, I created a game object with a UI Document component.  
 (right-click in the Hierarchy - UI Toolkit - UI Document)  
@@ -97,6 +122,8 @@ Next, I created the SO asset file for this class in the editor.
 
 Now our initial project is ready.
 
+---
+
 ## New Data Binding Method
 
 In the new version of UI Toolkit, developers can now bind data more flexibly, greatly simplifying the process of UI data binding.  
@@ -105,6 +132,8 @@ There are three main ways to achieve this:
 - Add a data source and bind data directly in the UI Builder
 - Add corresponding data binding content in UXML
 - Call VisualElement.SetBinding() method in C# script to set bindings for UI elements
+
+---
 
 ## Binding SO in UI Builder
 
@@ -137,14 +166,16 @@ This is one of the advantages of binding to a SO compared to binding to a Type.
 It's very useful for both programmers and non-programming designers.  
 Therefore, I personally recommend using the method of binding to SO for UI data binding.
 
-## Conclusion
+---
+
+## Outro
 
 This concludes the first part of the tutorial.  
-Thank you for watching.  
 In the next part, we will learn about some new attributes and the other two data binding methods.
 
-- [UI Toolkit New Features Part 2]()
+Thank you for reading.  
+See you next time.
 
 ---
 
-RYan Xu 2024-04-23
+RYan Xu 2024-04-19

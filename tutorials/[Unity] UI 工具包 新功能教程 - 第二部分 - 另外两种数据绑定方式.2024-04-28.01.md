@@ -1,9 +1,14 @@
-# UI 工具包新功能·Part 2
+# [Unity] UI 工具包 新功能教程 | 第二部分
+
+---
 
 ## 引言
 
+<details>
+<summary>教程简介（点击展开 / 隐藏）</summary>
+
 Yes, indeed!  
-Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的新功能。  
+Unity的UI工具包 (UI Toolkit) 在2023.2版本之后引入了一些关键的新功能。  
 本教程将涵盖其中最主要的改进内容，包括：
 
 - 新的数据绑定 (Data Binding) 方式
@@ -23,10 +28,12 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 - 教程录制直播录像：
 
-    - Day 1:  
+    - Day 1:
+        - [Bilibili](https://www.bilibili.com/video/BV1Pt421j7DX/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-        - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
-    - Day 2:  
+        - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
+    - Day 2:
+        - [Bilibili](https://www.bilibili.com/video/BV13t421A7y5/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
         - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
@@ -40,14 +47,21 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
     - Part 2
         - [YouTube](https://youtu.be/eBda493MQHo)
         - [Bilibili](https://www.bilibili.com/video/BV1WD421T7oq/)
+    - Part 3
+        - [YouTube](https://youtu.be/Z9AVTt4zZck)
+        - [Bilibili](https://www.bilibili.com/video/BV1Ui421Q7HP/)
+
+</details>
 
 ---
 
 本教程由三个部分组成，这是第二部分，主要内容是：
 
-- CreateProperty 与 DontCreateProperty 特性
+- `[CreateProperty]` 与 `[DontCreateProperty]` 特性
 - 在 UXML 里声明数据绑定
 - 在 C# 脚本里进行动态数据绑定
+
+---
 
 ## 绑定其他 UI 元素
 
@@ -89,6 +103,8 @@ string CharacterLevelString => $"Level: {characterLevel}";
 这是因为，这个字符串只是一个单纯的 C# 表达式体 (expression body) 属性，UI 构建器是无法找到非序列化的属性的。  
 那么，我们要怎么办呢？
 
+---
+
 ## CreateProperty 特性
 
 其实很简单，我们只需要给这个属性添加一个`[CreateProperty]`特性就可以了。
@@ -120,6 +136,8 @@ Perfect!
 然后我更改了 UI 里的角色名字标签文本属性的数据来源路径，将它设为`CharacterNameString`。  
 这样，UI 所显示的角色名字的信息会更完整一点。
 
+---
+
 ## DontCreateProperty 特性
 
 接下来我们来介绍另一个特性：`DontCreateProperty`.  
@@ -144,6 +162,8 @@ using UnityEngine;
 
 这样，它们就不会出现在数据来源路径里了。  
 妥善地使用这个特性，可以防止不参与编程的 UI 设计师或者开发者自己绑定了错误的数据，大家可以选择性的使用。
+
+---
 
 ## 在 UXML 里声明数据绑定
 
@@ -185,6 +205,8 @@ OK，我们保存 UXML，回到 UI 构建器。
 所不同的只是 UI 构建器提供了可视化的方法来编辑 UXML。  
 因此，如果你不具有 markup 语言相关知识，那么使用 UI 构建器来添加绑定就可以了。
 
+---
+
 ## 在 C# 脚本里进行动态数据绑定
 
 我们还剩下最后一个角色当前生命值标签没有添加数据绑定。  
@@ -225,10 +247,13 @@ public class CharacterInfoUI : MonoBehaviour
 关于 UQuery 这里我也不再多说了，我在以前的教程视频中有过非常详细的讲解。  
 如果你没有这方面的知识，还请参考我制作的教程视频。  
 
-- UI Toolkit UQuery 教程：
+<details>
+<summary>UI Toolkit UQuery 教程（点击展开 / 隐藏）</summary>>
 
     - [YouTube](https://youtu.be/DOn8P5Fg0gg)
     - [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
+
+</details>
 
 然后，我们调用该标签的`SetBinding()`方法来为它设置绑定。  
 这是在 2023.2 版本之后新增加的一个 API。  
@@ -241,35 +266,28 @@ public class CharacterInfoUI : MonoBehaviour
 - 第二个参数是一个 `UIElements.Binding` 类，用来传入具体的数据绑定的信息。  
   对于这个参数我们可以 new 一个 `DataBinding` 类，这个类继承自 `UIElements.Binding`.  
   在这个参数的对象初始化器 (Object Initializer) 里，我们为几个关键的属性赋值：
-  
     - `dataSource`: 数据来源，我们可以声明并使用一个序列化的角色信息数据类字段。
-
-    ```C#
-    [SerializeField] CharacterInfoData characterInfoData;
-    ```
-
     - `dataSourcePath`: 数据来源路径，我们想要传入的是 SO 里的`CharacterHealthString`属性。  
     这里我们直接 new 一个相应的`PropertyPath`类。  
     它的构造函数参数需要传入一个字符串类型的属性路径，同样的我们使用`nameof()`方法来取得`CharacterHealthString`属性的路径。  
     - `bindingMode`: 绑定模式，这是个`BindingMode`枚举类，它有四种类型：
-
-        - TwoWay: 双向绑定。  
+        - `TwoWay`: 双向绑定。  
         当被绑定的 UI 元素的属性值变动时，源数据会相应的更新；当源数据的值产生变化时，被绑定的UI 元素的属性值也会跟着变动。  
         这个绑定模式适合在某些情况下使用，一个典型的例子，就是洗点。  
         当玩家进行洗点的时候， UI 的数值以及玩家的属性值数据都应该同步的更新。
-        - ToSource: 绑定到数据来源。  
+        - `ToSource`: 绑定到数据来源。  
         当被绑定的 UI 元素的属性值变化时，数据来源的值会相应的更新。  
         反之，当源数据发生变化时，UI 则不会跟着更新。  
         例如，游戏设置画面的音量滑动条 (Slider) ，我们只想要通过拉动滑动条来改变音量，而不想要反过来影响到 UI。
-        - ToTarget: 绑定到数据来源的目标属性。  
+        - `ToTarget`: 绑定到 UI 元素的目标属性。  
         只有当数据来源的属性值变化时，UI 才会跟着更新。  
         在大部分的情况下，都是 UI 响应游戏数据的变化。  
         因此，这是我们最常用的一种绑定模式。
-        - ToTargetOnce: 同样的，绑定到目标属性，但是 UI 只会更新一次，下一次当源数据产生变化时，UI 就不会再更新了。  
+        - `ToTargetOnce`: 同样的，绑定到 UI 元素的目标属性，但是 UI 只会更新一次，下一次当源数据产生变化时，UI 就不会再更新了。  
         这个绑定模式在某些特定的情况下会用到，比如玩家的成就 UI。  
         当玩家达成某个成就之后只需要更新一次 UI，后续无论源数据如何变化我们都不需要管。
   
-    这里的绑定模式参数，我们传入`BindingMode.ToTarget`, 大家在实际运用中可以按需求来选择其他的模式。  
+      这里的绑定模式参数，我们传入`BindingMode.ToTarget`, 大家在实际运用中可以按需求来选择其他的模式。  
 
 ```C#
 using Unity.Properties;
@@ -297,13 +315,18 @@ public class CharacterInfoUI : MonoBehaviour
 
 OK，这样我们就设置好了角色生命值标签的 text 属性的数据绑定。
 
-这里给出上面所用到的API的文档链接，大家如果有需要的话请自行前往查看学习：
+这里给出上面所用到的API的文档链接，大家如果有需要的话请自行前往查看学习。
+
+<details>
+<summary>SetBinding() 相关API（点击展开 / 隐藏）</summary>
 
 - [VisualElement.SetBinding](https://docs.unity3d.com/2023.2/Documentation/ScriptReference/UIElements.VisualElement.SetBinding.html)
 - [BindingId](https://docs.unity3d.com/2023.2/Documentation/ScriptReference/UIElements.BindingId.html)
 - [DataBinding](https://docs.unity3d.com/2023.2/Documentation/ScriptReference/UIElements.DataBinding.html)
 - [PropertyPath](https://docs.unity3d.com/2023.2/Documentation/ScriptReference/Unity.Properties.PropertyPath.html)
 - [BindingMode](https://docs.unity3d.com/2023.2/Documentation/ScriptReference/UIElements.BindingMode.html)
+
+</details>
 
 `VisualElement.SetBinging()`提供了一种动态地进行 UI 数据绑定的方法，它为开发者提供了更多的灵活性和控制权。  
 但由于它是动态的，因此只有在游戏运行之后绑定才会生效。
@@ -349,10 +372,12 @@ public class CharacterInfoUI : MonoBehaviour
 ```
 
 我们保存脚本回到 Unity 编辑器。  
-填写好脚本里的 SO，运行游戏。  
+填写好 CharacterInfoUI 脚本里的 SO 字段，运行游戏。  
 当我们按下键盘的 Q 键，可以观察到角色生命值将会不断减少，直到 0 为止。  
 当按下 E 键时，角色生命值则会不断增加，直到最大生命值为止。  
 很好，我们在 C# 代码中进行的数据绑定也正确的生效了。
+
+---
 
 ## 结语
 
@@ -365,13 +390,8 @@ public class CharacterInfoUI : MonoBehaviour
 希望本教程对你有所帮助。  
 如果你觉得本教程还不错，还请记得帮我点个赞。
 
-感谢您的观看。  
+感谢您的阅读。  
 我们下次见。
-
----
-
-- [Unity UI 工具包新功能教程 - Part 1](https://ryanxudev.github.io/#2024-04-19_01)
-- [Unity UI 工具包新功能教程 - Part 3](https://ryanxudev.github.io/#2024-04-18_02)
 
 ---
 

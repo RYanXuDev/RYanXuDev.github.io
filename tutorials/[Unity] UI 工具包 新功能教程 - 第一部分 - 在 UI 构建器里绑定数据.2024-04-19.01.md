@@ -1,9 +1,14 @@
-# UI 工具包新功能·Part 1
+# [Unity] UI 工具包 新功能教程 | 第一部分
+
+---
 
 ## 引言
 
+<details>
+<summary>教程简介（点击展开 / 隐藏）</summary>
+
 Yes, indeed!  
-Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的新功能。  
+Unity的UI工具包 (UI Toolkit) 在2023.2版本之后引入了一些关键的新功能。  
 本教程将涵盖其中最主要的改进内容，包括：
 
 - 新的数据绑定 (Data Binding) 方式
@@ -23,10 +28,12 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 - 教程录制直播录像：
 
-    - Day 1:  
+    - Day 1:
+        - [Bilibili](https://www.bilibili.com/video/BV1Pt421j7DX/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
-        - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)  
-    - Day 2:  
+        - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
+    - Day 2:
+        - [Bilibili](https://www.bilibili.com/video/BV13t421A7y5/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
         - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
@@ -40,6 +47,11 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
     - Part 2
         - [YouTube](https://youtu.be/eBda493MQHo)
         - [Bilibili](https://www.bilibili.com/video/BV1WD421T7oq/)
+    - Part 3
+        - [YouTube](https://youtu.be/Z9AVTt4zZck)
+        - [Bilibili](https://www.bilibili.com/video/BV1Ui421Q7HP/)
+
+</details>
 
 ---
 
@@ -47,6 +59,8 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 
 - 示例工程的准备
 - 新的数据绑定方式的其中之一：通过 UI 构建器绑定 SO
+
+---
 
 ## 示例工程准备
 
@@ -60,10 +74,15 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 ![示例角色信息画面](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-01.png)
 
 UI 的构建过程我就不解释了，我在以前的视频教程中有过详细的讲解。  
-如果你需要从头学习如何通过 UI 构建器来创建 UI，可以参考我以前的视频教程：  
+如果你需要从头学习如何通过 UI 构建器来创建 UI，可以参考我以前的视频教程。
+
+<details>
+<summary>UI Toolkit 基础教程（点击展开 / 隐藏）</summary>
 
 - [YouTube](https://www.youtube.com/playlist?list=PLrn_k3ArwNC1l_upOeWPdfRyLcXBuE-tx)
 - [Bilibili](https://www.bilibili.com/video/BV1pK411m7n9/)
+
+</details>
 
 我在示例场景中创建了一个带有 UI Document 组件的游戏对象(在 Hierarchy 里右键 - UI Toolkit - UI Document)，将它命名为 Sample UI。  
 UI Document 组件的 Source Asset 我们选择刚才创建的角色信息画面Uxml文件，这样游戏窗口就会显示该UI了。
@@ -106,6 +125,8 @@ public class CharacterInfoData : ScriptableObject
 
 这样我们的初始项目就准备好了。
 
+---
+
 ## 新的数据绑定方式
 
 在新的版本中，开发者现在可以更灵活地进行数据绑定。  
@@ -115,6 +136,8 @@ public class CharacterInfoData : ScriptableObject
 1. 在 UI 构建器里直接添加数据来源并绑定数据
 2. 在 UXML 里添加数据绑定的相应内容
 3. 在 C# 脚本里调用 VisualElement.SetBinding() 方法为 UI 元素设置绑定
+
+---
 
 ## 在 UI 构建器里绑定 SO
 
@@ -147,19 +170,15 @@ public class CharacterInfoData : ScriptableObject
 不管是对程序员还是不参与编程的设计师来说，这都是很有用的。  
 因此，个人更推荐通过绑定 SO 的方式来实现 UI 的数据绑定。
 
+---
+
 ## 结语
 
 本教程第一部分的内容到这里就结束了。  
-感谢您的观看。  
 下一部分我们将学习几个新的特性以及另外两种数据绑定方式。  
 
-感谢您的观看。  
+感谢您的阅读。  
 我们下次见。
-
----
-
-- [Unity UI 工具包新功能教程 - Part 2](https://ryanxudev.github.io/#2024-04-28_01)
-- [Unity UI 工具包新功能教程 - Part 3](https://ryanxudev.github.io/#2024-04-18_02)
 
 ---
 

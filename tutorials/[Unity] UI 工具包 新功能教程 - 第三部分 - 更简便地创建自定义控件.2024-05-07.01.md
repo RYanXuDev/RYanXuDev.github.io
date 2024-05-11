@@ -1,14 +1,14 @@
-# UI 工具包新功能·Part 3
+# [Unity] UI 工具包 新功能教程 | 第三部分
 
 ---
 
 ## 引言
 
 <details>
-<summary>教程简介（点击展开/隐藏）</summary>
+<summary>教程简介（点击展开 / 隐藏）</summary>
 
 Yes, indeed!  
-Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的新功能。  
+Unity的UI工具包 (UI Toolkit) 在2023.2版本之后引入了一些关键的新功能。  
 本教程将涵盖其中最主要的改进内容，包括：
 
 - 新的数据绑定 (Data Binding) 方式
@@ -29,9 +29,11 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
 - 教程录制直播录像：
 
     - Day 1:
+        - [Bilibili](https://www.bilibili.com/video/BV1Pt421j7DX/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102799835?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
         - [爱发电](https://afdian.net/p/8283596c00d911ef81a15254001e7c00)
     - Day 2:
+        - [Bilibili](https://www.bilibili.com/video/BV13t421A7y5/)
         - [Patreon](https://www.patreon.com/posts/unity-ui-toolkit-102845772?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link)
         - [爱发电](https://afdian.net/p/e649e94400dd11efa59e52540025c377)
 
@@ -45,6 +47,9 @@ Unity的UI工具包 (UI ToolkitUI) 在2023.2版本之后引入了一些关键的
     - Part 2
         - [YouTube](https://youtu.be/eBda493MQHo)
         - [Bilibili](https://www.bilibili.com/video/BV1WD421T7oq/)
+    - Part 3
+        - [YouTube](https://youtu.be/Z9AVTt4zZck)
+        - [Bilibili](https://www.bilibili.com/video/BV1Ui421Q7HP/)
 
 </details>
 
@@ -147,11 +152,15 @@ public HealthBar()
 回到 UI 构建器当中，可以看到 Health Bar 底下有了 Background 与 Foreground 这两个元素。  
 现在它们的样式是默认的，元素的高度和宽度都是 0，因此没有任何东西可以渲染出来。  
 我们通过 USS 选择器来定义血条的样式，将它按我们想要的样子渲染出来。  
-关于 USS 选择器的知识，阿严以前也做了详细的讲解，如果你需要这方面的知识，还请参考我制作的教程视频：
+关于 USS 选择器的知识，阿严以前也做了详细的讲解，如果你需要这方面的知识，还请参考我制作的教程视频。
 
-- USS 选择器示例详解
-    - [YouTube](https://youtu.be/zkecVznjBeY)
-    - [Bilibili](https://www.bilibili.com/video/BV11M411y7Vs/)
+<details>
+<summary>USS 选择器示例详解（点击展开 / 隐藏）</summary>
+
+- [YouTube](https://youtu.be/zkecVznjBeY)
+- [Bilibili](https://www.bilibili.com/video/BV11M411y7Vs/)
+
+</details>
 
 注意，这里的 Foreground 元素的宽度和高度的单位都是百分比，因此，它们是相对于它的父级元素也就是 Background 元素的宽和高来计算的。  
 当我们修改前景元素的宽度百分比时，它会按该百分比来填充背景元素，这就是我们要的填充效果了。  
@@ -188,7 +197,7 @@ int FillPercent
 
 ---
 
-## UxmlAttribute 特性
+## [UxmlAttribute] 特性
 
 OK，接下来我们所需要的就是将这个属性曝露到 UI 构建器里了。
 
@@ -303,7 +312,7 @@ string HealthPercentString => HealthPercent.ToString("P0", System.Globalization.
 请尝试着思考并动手实现一下吧！
 
 <details>
-<summary>阿严的实现方法（点击展开/隐藏）</summary>
+<summary>阿严的实现方法（点击展开 / 隐藏）</summary>
 
 回到 HealthBar 自定义控件脚本。  
 要设置前景元素的颜色，很明显的，我们需要声明一个`Color`字段，这里我们就叫它`foregroundColor`。
@@ -381,12 +390,8 @@ Color HealthBarColor => healthBarGradient.Evaluate(HealthPercent);
 希望本教程对你有所帮助！  
 如果你觉得本教程还不错，请帮我点个赞，并分享给更多同学让大家都能看到。
 
-(视频：另外，阿严最近也开始承接游戏开发的外包与兼职业务了。  
-如果你有这方面的需求，欢迎和我联系！  
-当然，如果有我可以胜任的工作岗位，也请多多推荐给我！  
-再次感谢大家的支持！）
-
-感谢您的观看。我是阿严。我们下次见！
+感谢您的阅读。  
+我们下次见！
 
 ---
 
