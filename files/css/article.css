@@ -212,8 +212,9 @@ a:hover
 
 .article-content-container summary
 {
-    color: var(--link-color);
+    color: var(--text-color);
     font-size: 0.9em;
+    font-weight: bold;
 }
 
 ::-webkit-scrollbar
