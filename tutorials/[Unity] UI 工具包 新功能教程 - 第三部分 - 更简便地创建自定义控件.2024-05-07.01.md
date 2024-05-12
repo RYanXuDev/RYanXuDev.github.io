@@ -209,7 +209,7 @@ OK，接下来我们所需要的就是将这个属性曝露到 UI 构建器里�
 
 还有一点小细节。  
 很明显的，FillPercent 的取值将会在 0 到 100 之间，不会超出这个范围。  
-因此，我们还可以使用`Range`特性来限制它的取值范围。
+因此，我们还可以使用`[Range]`特性来限制它的取值范围。
 
 ```csharp
 const float BorderRaidus = 5;
@@ -369,7 +369,7 @@ Color HealthBarColor => healthBarGradient.Evaluate(HealthPercent);
 
 ![Health Bar Gradient](../images/ui-toolkit-in-Unity-2023/UIToolkitInUnity2023-09.png)
 
-然后，我们在 UI 构建器里将血条元素的前景颜色属性与数据来源里的血条颜色属性进行绑定。  
+然后，我们在 UI 构建器里将 HealthBar 控件的 Foreground 元素的 Background Color 属性与数据来源里的 `HealthBarColor` 属性进行绑定。  
 
 大功告成！  
 现在，当角色的血量变化时，可以看到血条的颜色会产生完美的渐变了。
@@ -377,7 +377,7 @@ Color HealthBarColor => healthBarGradient.Evaluate(HealthPercent);
 </details>
 
 最后，再留给大家一个小作业：  
-请大家为 Portrait 角色的头像元素绑定数据。
+请大家为 Portrait （角色的头像元素）绑定数据。
 
 这应该非常的简单，我想学到这里你肯定会了，对吧？
 

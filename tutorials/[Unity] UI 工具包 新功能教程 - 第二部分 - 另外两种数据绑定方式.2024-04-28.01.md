@@ -105,7 +105,7 @@ string CharacterLevelString => $"Level: {characterLevel}";
 
 ---
 
-## CreateProperty 特性
+## [CreateProperty] 特性
 
 其实很简单，我们只需要给这个属性添加一个`[CreateProperty]`特性就可以了。
 
@@ -138,17 +138,17 @@ Perfect!
 
 ---
 
-## DontCreateProperty 特性
+## [DontCreateProperty] 特性
 
-接下来我们来介绍另一个特性：`DontCreateProperty`.  
+接下来我们来介绍另一个特性：`[DontCreateProperty]`.  
 如它的名字所示，它的意思就是不要创建属性。  
-这个特性的作用和`CreateProperty`特性的作用是相反的。  
-`CreateProperty`特性用来标记无法被 Unity 序列化的成员，让它生成一个序列化属性。  
-而`DontCreateProperty`特性则用来标记可以被 Unity 序列化的成员，比如设为`public`的公有字段，或者标记为`[SerializeField]`的私有字段，防止它们创建序列化属性。  
+这个特性的作用和`[CreateProperty]`特性的作用是相反的。  
+`[CreateProperty]`特性用来标记无法被 Unity 序列化的成员，让它生成一个序列化属性。  
+而`[DontCreateProperty]`特性则用来标记可以被 Unity 序列化的成员，比如设为`public`的公有字段，或者标记为`[SerializeField]`的私有字段，防止它们创建序列化属性。  
 没错，比如我们在角色信息数据类里写的这四个序列化字段。  
 现在，我们可以在数据来源路径里找到这四个序列化字段。  
 但其实我们并不想要绑定这四个字段，因为它们并不符合我们的需求。  
-因此，我们可以为这四个序列化字段添加`DontCreateProperty`特性，让它们不要创建出序列化属性。
+因此，我们可以为这四个序列化字段添加`[DontCreateProperty]`特性，让它们不要创建出序列化属性。
 
 ```C#
 using Unity.Properties;
@@ -248,10 +248,10 @@ public class CharacterInfoUI : MonoBehaviour
 如果你没有这方面的知识，还请参考我制作的教程视频。  
 
 <details>
-<summary>UI Toolkit UQuery 教程（点击展开 / 隐藏）</summary>>
+<summary>UI Toolkit UQuery 教程（点击展开 / 隐藏）</summary>
 
-    - [YouTube](https://youtu.be/DOn8P5Fg0gg)
-    - [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
+- [YouTube](https://youtu.be/DOn8P5Fg0gg)
+- [Bilibili](https://www.bilibili.com/video/BV1tG4y147ha/)
 
 </details>
 
