@@ -33,7 +33,7 @@ Dragon Crashers是Unity官方的2D游戏演示项目，原来的版本是一个�
 你可以通过页面下方的链接下载并尝试本游戏Demo。
 如果你被新的JRPG战斗系统所吸引，那么别忘了下载试玩版。
 
-[⏬ 试玩版下载 ⏬](https://github.com/RYanXuDev/RYanXuDev.github.io/raw/main/projects/unity/dragon-crashers-jrpg/RYanIndieDev-DragonCrashersJRPG_Windows_V0.2.zip)
+[⏬ 试玩版下载 ⏬](https://ryanindiedev.itch.io/dragoncrashersjrpg)
 
 ![New JRPG Battle System](../../../images/dragon-crashers-jrpg/1.png)
 
