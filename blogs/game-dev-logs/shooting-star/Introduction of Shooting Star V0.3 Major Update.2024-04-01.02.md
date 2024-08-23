@@ -32,9 +32,7 @@
 
 我制作了该新版本的试玩版。游戏的下载链接可以在下方找到。<br>同时，我还制作了 WebGL 平台的试玩版。假如您不方便下载游戏，也可以直接在我的个人网页上试玩。<br>如果您感兴趣的话，还请务必尝试一下。
 
-- 试玩版下载
-    - [Windows](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
-    - [Mac](https://github.com/RYanXuDev/RYanXuDev.github.io/raw/main/projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Mac_Development.zip)
+- [试玩版下载](https://ryanindiedev.itch.io/shootingstar)
 - [在我的网页上试玩](https://ryanxudev.github.io/)
 
 ----
@@ -69,9 +67,7 @@ The top 100 players will be displayed on the high score leaderboard.
 
 I have also created a playable demo of the new version. You can find the download link below. <br>Additionally, I have created a WebGL version of the demo, so if you prefer not to download the game, you can try it directly on my website. <br>If you're interested, be sure to give it a try.
 
-- Playable Demo Download
-    - [Windows](../../../projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Windows_Development.zip)
-    - [Mac](https://github.com/RYanXuDev/RYanXuDev.github.io/raw/main/projects/unity/shooting-star/RYanXuDev_ShootingStar_V0.3.3_Mac_Development.zip)
+- [Playable Demo Download](https://ryanindiedev.itch.io/shootingstar)
 - [Play the WebGL version Demo on my website](https://ryanxudev.github.io/)
 
 ----
