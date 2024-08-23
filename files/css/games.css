@@ -67,6 +67,11 @@
     background-image: url("../../images/shooting-star/ShootingStar_01.png");
 }
 
+.game-panel-02
+{
+    background-image: url("../../images/dragon-crashers-jrpg/4.png");
+}
+
 .game-window
 {
     display: none;

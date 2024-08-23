@@ -134,7 +134,9 @@ function initializeContent() {
                 case 'game-shooting-star':
                     loadGame("https://itch.io/embed-upload/10078260?color=ffffff");
                     break;
-                case 'game-02':
+                case 'game-dragon-crashers-jrpg':
+                    loadGame("https://itch.io/embed-upload/11290603?color=ffffff")
+                    // resizeGameFrame(1600, 900);
                     break;
                 case 'game--03':
                     break;
@@ -151,7 +153,7 @@ function initializeContent() {
         function loadGame(path) {
             unloadGame();
             gameFrame.src = path;
-            gameFrame.setAttribute('allowfullscreen', '');
+            gameFrame.setAttribute('allowfullscreen', 'true');
             gameWindow.appendChild(gameFrame);
         }
 
@@ -161,6 +163,18 @@ function initializeContent() {
             if (iframe) {
                 gameWindow.removeChild(iframe);
             }
+        }
+        
+        function resizeGameFrame(gameWidth, gameHeight)
+        {
+            const frameWidth = gameFrame.clientWidth;
+            const frameHeight = gameFrame.clientHeight;
+            const scaleWidth = frameWidth / gameWidth;
+            const scaleHeight = frameHeight / gameHeight;
+            const scale = Math.min(scaleWidth, scaleHeight);
+            
+            gameFrame.style.transform = `scale(${scale})`;
+            gameFrame.style.transformOrigin = '0.5 0.5';
         }
     }
 
